@@ -89,11 +89,15 @@ class Game:
                                   font="Arial 15 bold", width=20, padx=10, pady=10)
         self.answer_button_4.grid(row=1, column=2, padx=2, pady=2)
 
-
+        # Next Question Button (row 5)
+        self.next_button = Button(self.box_frame, text="Next Question", font=("Arial 14 bold"),
+                                   bg="#CED4DA", 
+                                   command=lambda: self.to_stats(self.round_stats_list, self.game_stats_list))
+        self.next_button.grid(row=0, column=2, padx=2)
     
-        # Help and Game Stats button (row 5)
+        # Help and Game Stats button (row 6)
         self.help_export_frame = Frame(self.game_frame, bg="#F8F9FA")
-        self.help_export_frame.grid(row=5, pady=10)
+        self.help_export_frame.grid(row=6, pady=10)
 
         self.help_button = Button(self.help_export_frame, text="Help",
                                   font="Arial 14 bold", bg="#CED4DA",
@@ -110,7 +114,7 @@ class Game:
         self.quit_button = Button(self.game_frame, text="Quit",
                                   bg="#343a40", fg="white", font="Arial 15 bold", width=20,
                                   command=self.to_quit, padx=10, pady=10)
-        self.quit_button.grid(row=6, pady=10)
+        self.quit_button.grid(row=7, pady=10)
         
     def to_quit(self):
         root.destroy()
