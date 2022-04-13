@@ -25,50 +25,50 @@ class Start:
 
         # Play button
         self.play_button = Button(self.play_frame, text="Play",
-                                       command=lambda: self.to_game(1),
+                                       command=lambda: self.to_quiz(1),
                                        font="Arial 19", bg="#CED4DA")
         self.play_button.grid(row=0, column=0, pady=10)
 
 
-    def to_game(self, stakes):
+    def to_quiz(self, stakes):
 
-        Game(self)
+        Quiz(self)
 
         # hide start up window
         root.withdraw()
 
-class Game:
+class Quiz:
     def __init__(self,partner):
         
         # GUI Setup
-        self.game_box = Toplevel()
+        self.quiz_box = Toplevel()
 
-        # If users press cross at top, game quits
-        self.game_box.protocol('WM_DELETE_WINDOW', self.to_quit)
+        # If users press cross at top, quiz quits
+        self.quiz_box.protocol('WM_DELETE_WINDOW', self.to_quit)
 
-        self.game_frame = Frame(self.game_box, bg="#F8F9FA")
-        self.game_frame.grid()
+        self.quiz_frame = Frame(self.quiz_box, bg="#F8F9FA")
+        self.quiz_frame.grid()
 
         # Heading Row
-        self.heading_label = Label(self.game_frame, text="Phobia Quiz",
+        self.heading_label = Label(self.quiz_frame, text="Phobia Quiz",
                                    font="Arial 24 bold", padx=10, pady=10, bg="#F8F9FA")
         self.heading_label.grid(row=0)
 
         # Question number Label
-        self.question_number_label = Label(self.game_frame, wrap=300, justify=LEFT,
+        self.question_number_label = Label(self.quiz_frame, wrap=300, justify=LEFT,
                                         text="Question number goes here",
                                         font="Arial 10", padx=10, pady=10, bg="#F8F9FA")
         self.question_number_label.grid(row=1)
 
         # Question Label
-        self.question_label = Label(self.game_frame, wrap=300, justify=LEFT,
+        self.question_label = Label(self.quiz_frame, wrap=300, justify=LEFT,
                                         text="Question goes here",
                                         font="Arial 10", padx=10, pady=10, bg="#F8F9FA")
         self.question_label.grid(row=2)
         
 
         # Answer buttons go here (row 3)
-        self.box_frame = Frame(self.game_frame, bg="#F8F9FA")
+        self.box_frame = Frame(self.quiz_frame, bg="#F8F9FA")
         self.box_frame.grid(row=3, pady=10)
 
         self.answer_button_1 = Button(self.box_frame, text="Answer buttons", bg="#CED4DA",
@@ -91,16 +91,16 @@ class Game:
 
 
         # Next Question Button (row 5)
-        self.next_button_frame = Frame(self.game_frame, bg="#F8F9FA")
+        self.next_button_frame = Frame(self.quiz_frame, bg="#F8F9FA")
         self.next_button_frame.grid(row=5, pady=10)
 
         self.next_button = Button(self.next_button_frame, text="Next Question", font=("Arial 14 bold"),
                                    bg="#CED4DA", 
-                                   command=lambda: self.to_stats(self.round_stats_list, self.game_stats_list))
+                                   command=lambda: self.to_stats(self.round_stats_list, self.quiz_stats_list))
         self.next_button.grid(row=0, column=2, padx=2)
     
-        # Help and Game Stats button (row 6)
-        self.help_export_frame = Frame(self.game_frame, bg="#F8F9FA")
+        # Help and Quiz Stats button (row 6)
+        self.help_export_frame = Frame(self.quiz_frame, bg="#F8F9FA")
         self.help_export_frame.grid(row=6, pady=10)
 
         self.help_button = Button(self.help_export_frame, text="Help",
@@ -109,13 +109,13 @@ class Game:
         self.help_button.grid(row=0, column=1, padx=2)
 
         # Stats button
-        self.stats_button = Button(self.help_export_frame, text="Game Stats", font=("Arial 14 bold"),
+        self.stats_button = Button(self.help_export_frame, text="Quiz Stats", font=("Arial 14 bold"),
                                    bg="#CED4DA", 
-                                   command=lambda: self.to_stats(self.round_stats_list, self.game_stats_list))
+                                   command=lambda: self.to_stats(self.round_stats_list, self.quiz_stats_list))
         self.stats_button.grid(row=0, column=2, padx=2)
 
         # Quit Button
-        self.quit_button = Button(self.game_frame, text="Quit",
+        self.quit_button = Button(self.quiz_frame, text="Quit",
                                   bg="#343a40", fg="white", font="Arial 15 bold", width=20,
                                   command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=7, pady=10)
@@ -129,8 +129,8 @@ class Game:
         get_help = Help(self)
         get_help.help_text.configure(text="Help text goes here")
 
-    def to_stats(self, game_history, game_stats):
-        GameStats(self, game_history, game_stats)
+    def to_stats(self, quiz_history, quiz_stats):
+        QuizStats(self, quiz_history, quiz_stats)
 
 
 

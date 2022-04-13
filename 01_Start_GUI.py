@@ -15,7 +15,8 @@ class Start:
 
         # initial instructions (row 1)
         self.mystery_intructions = Label(self.start_frame, font="Arial 10 italic", bg="#CAF0F8",
-                                         text="Quiz description does here",
+                                         text="This is a quiz where you get given a question asking what a certain phobia is the fear of and you get given 4 multiple choice answers to choose from."
+                                              "There are 113 Phobias in this quiz shown in a random order but you can check your stats and quit at any point",
                                          wrap=275, justify=LEFT, padx=10, pady=10)
         self.mystery_intructions.grid(row=1)
 
@@ -32,7 +33,8 @@ class Start:
 
     def to_game(self, stakes):
 
-        Game(self)
+        print("play")
+        #Game(self)
 
         # hide start up window
         root.withdraw()
