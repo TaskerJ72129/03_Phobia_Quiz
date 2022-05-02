@@ -98,6 +98,8 @@ class Quiz:
                                    bg="#CED4DA", 
                                    command=lambda: self.to_stats(self.round_stats_list, self.quiz_stats_list))
         self.next_button.grid(row=0, column=2, padx=2)
+
+        self.next_button.config(state=DISABLED)
     
         # Help and Quiz Stats button (row 6)
         self.help_export_frame = Frame(self.quiz_frame, bg="#F8F9FA")
@@ -109,7 +111,7 @@ class Quiz:
         self.help_button.grid(row=0, column=1, padx=2)
 
         # Stats button
-        self.stats_button = Button(self.help_export_frame, text="Quiz Stats", font=("Arial 14 bold"),
+        self.stats_button = Button(self.help_export_frame, text="Stats", font=("Arial 14 bold"),
                                    bg="#CED4DA", 
                                    command=lambda: self.to_stats(self.round_stats_list, self.quiz_stats_list))
         self.stats_button.grid(row=0, column=2, padx=2)
@@ -121,7 +123,8 @@ class Quiz:
         self.quit_button.grid(row=7, pady=10)
     
     def reveal_answers(self):
-        
+        print()
+
     def to_quit(self):
         root.destroy()
 
