@@ -1,3 +1,9 @@
+import random
+
+
+
+
+
 phobia_list = ["Achluophobia ", "Acousticophobia ",
 "Acrophobia ",
 "Aerophobia ",
@@ -234,5 +240,8 @@ print(fear_name_list)
 print(len(fear_name_list))
 
 
-
 print("{} is the fear of:".format(phobia_list[0]))
+
+random = random.randint(1, len(fear_name_list))
+print(random)
+print(fear_name_list[random])
