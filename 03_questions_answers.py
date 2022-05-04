@@ -2,15 +2,13 @@ import random
 
 
 
-
-
 phobia_list = ['Achluophobia ', 'Acousticophobia ', 'Acrophobia ', 'Aerophobia ', 'Agoraphobia ', 'Agyrophobia ', 'Aichmophobia ', 'Ailurophobia ', 'Algophobia ', 'Ancraophobia ', 
 'Aquaphobia ', 'Arachnophobia ', 'Astraphobia ', 'Autophobia ', 'Bacteriophobia ', 'Basophobia ', 'Batrachophobia ', 'Belonephobia ', 'Bibliophobia ', 'Cacophobia ', 'Carcinophobia ', 
 'Catoptrophobia ', 'Chemophobia ', 'Cherophobia ', 'Chiroptophobia ', 'Chromophobia ', 'Chronomentrophobia ', 'Chronophobia ', 'Cibophobia ', 'Claustrophobia ', 'Coimetrophobia ', 
 'Coulrophobia ', 'Cyberphobia ', 'Cynophobia ', 'Demonophobia ', 'Dendrophobia ', 'Dentophobia ', 'Domatophobia ', 'Emetophobia ', 'Enochlophobia ', 'Entomophobia ', 'Ephebiphobia ', 
 'Equinophobia ', 'Ergophobia ', 'Frigophobia ', 'Gamophobia ', 'Gephyrophobia ', 'Gerascophobia ', 'Germophobia ', 'Globophobia ', 'Glossophobia ', 'Halitophobia ', 'Heliophobia ', 
 'Helminthophobia ', 'Hemophobia ', 'Herpetophobia ', 'Hexakosioihexekontahexaphobia ', 'Hodophobia ', 'Hydrophobia ', 'Hypochondria ', 'Ichthyophobia ', 'Insectophobia ', 'Koumpounophobia ', 
-'Lepidopterophobia ', 'Lilapsophobia ', 'Mageirocophobia ', 'Melanophobia ', 'Melissophobia ', 'Monophobia ', 'Musophobi ', 'Myrmecophobia ', 'Necrophobia ', 'Neophobia ', 'Noctiphobia ', 
+'Lepidopterophobia ', 'Lilapsophobia ', 'Mageirocophobia ', 'Melanophobia ', 'Melissophobia ', 'Monophobia ', 'Musophobia ', 'Myrmecophobia ', 'Necrophobia ', 'Neophobia ', 'Noctiphobia ', 
 'Nosocomephobia ', 'Numerophobia ', 'Nyctophobia ', 'Obesophobia ', 'Ommetaphobia ', 'Oneirophobia ', 'Ophidiophobia ', 'Ornithophobia ', 'Osmophobia ', 'Ostraconophobia ', 'Panphobia ', 
 'pediaphobia ', 'Pharmacophobia ', 'Phasmophobia ', 'Phobophobia ', 'Phonophobia ', 'Pogonophobia ', 'Porphyrophobia ', 'Pteromerhanophobia ', 'Pyrophobia ', 'Radiophobia ', 
 'Roller coaster phobia ', 'Siderodromophobia ', 'Sociophobia ', 'Somniphobia ', 'Taphophobia ', 'Technophobia ', 'Tetraphobia ', 'Thalassophobia ', 'Thanatophobia ', 'Thermophobia ', 
@@ -44,19 +42,40 @@ print(correct_fear)
 phobia_list.pop(random_phobia)
 fear_name_list.pop(random_phobia)
 print(len(phobia_list))
+
+random_fear1 = random.randint(1, (len(fear_name_list)-1))
+random_fear1_name = fear_name_list[random_fear1]
+print(random_fear1)
+print(random_fear1_name)
+fear_name_list.pop(random_fear1)
+
+random_fear2 = random.randint(1, (len(fear_name_list)-1))
+random_fear2_name = fear_name_list[random_fear2]
+print(random_fear2)
+print(random_fear2_name)
+fear_name_list.pop(random_fear2)
+
+random_fear3 = random.randint(1, (len(fear_name_list)-1))
+random_fear3_name = fear_name_list[random_fear3]
+print(random_fear3)
+print(random_fear3_name)
+fear_name_list.pop(random_fear3)
+
+random_fear4 = (len(fear_name_list)-1)
+random_fear4_name = fear_name_list[random_fear4]
+print(random_fear4)
+print(random_fear4_name)
+fear_name_list.pop(random_fear4)
+
 print(len(fear_name_list))
 
-random_fear1 = random.randint(1, len(fear_name_list))
-print(random_fear1)
-print(fear_name_list[random_fear1])
+fear_name_list.insert(random_fear4, random_fear4_name)
+fear_name_list.insert(random_fear1, random_fear1_name)
+fear_name_list.insert(random_fear2, random_fear2_name)
+fear_name_list.insert(random_fear2, random_fear3_name)
 
-random_fear2 = random.randint(1, len(fear_name_list))
-print(random_fear2)
-print(fear_name_list[random_fear2])
-
-random_fear3 = random.randint(1, len(fear_name_list))
-print(random_fear3)
-print(fear_name_list[random_fear3])
+print(len(fear_name_list))
+print(fear_name_list)
 
 
 print(random_phobia)
