@@ -16,7 +16,7 @@ phobia_list = ['Achluophobia ', 'Acousticophobia ', 'Acrophobia ', 'Aerophobia '
 ]
 
 fear_name_list = ['darkness', 'noise', 'heights', 'flying', 'open spaces', 'crossing streets', 'sharp objects', 'cats', 'pain', 'wind', 'water', 'spiders', 'thunder and lightning',
-'isolation', 'bacteria', 'falling', 'frogs', 'needls', 'books', 'ugliness', 'cancer', 'mirros', 'chemicals', 'happiness', 'bats', 'colours', 'clocks', 'time passing', 'food', 
+'isolation', 'bacteria', 'falling', 'frogs', 'needls', 'books', 'ugliness', 'cancer', 'mirrors', 'chemicals', 'happiness', 'bats', 'colours', 'clocks', 'time passing', 'food', 
 'closed spaces', 'cemetries', 'clowns', 'computers', 'dogs', 'demons', 'trees', 'dentists', 'houses', 'vomiting', 'crowds', 'insects', 'youth', 'horses', 'work', 'cold', 'marriage', 
 'bridges', 'aging', 'germs', 'balloons', 'public speaking', 'bad breath', 'sunlight', 'worms', 'blood', 'reptiles', '666', 'travel', 'water', 'illness', 'fish', 'insects', 'buttons', 
 'butteflies', 'tornadoes or hurricanes', 'cooking', 'black', 'bees', 'being alone', 'mice', 'ants', 'death', 'new things', 'night', 'hospitals', 'numbers', 'darkness', 
@@ -70,12 +70,13 @@ fear_name_list.pop(random_fear4)
 print(len(fear_name_list))
 
 fear_name_list.insert(random_fear4, random_fear4_name)
-fear_name_list.insert(random_fear1, random_fear1_name)
-fear_name_list.insert(random_fear2, random_fear2_name)
 fear_name_list.insert(random_fear2, random_fear3_name)
+fear_name_list.insert(random_fear2, random_fear2_name)
+fear_name_list.insert(random_fear1, random_fear1_name)
 
 print(len(fear_name_list))
-print(fear_name_list)
+
+
 
 
 print(random_phobia)

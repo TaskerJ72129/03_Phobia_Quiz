@@ -123,7 +123,7 @@ class Quiz:
                                   command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=7, pady=10)
     
-    def questions_and_answers(self):
+    def question_and_answers(self):
         print()
 
     def to_quit(self):
