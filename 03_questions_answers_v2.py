@@ -33,6 +33,8 @@ fear_name_list = ['darkness', 'noise', 'heights', 'flying', 'open spaces', 'cros
 'driving', 'yellow', 'foreigners'
 ]
 
+
+
 random_phobia = random.randint(1, len(phobia_list))
 print(random_phobia)
 correct_phobia = phobia_list[random_phobia]
@@ -50,7 +52,24 @@ print(len(phobia_list))
 random_fears = random.sample(range(1, len(fear_name_list)-1), 3)
 print(random_fears)
 
+random_fear_1 = random_fears[0]
+print(random_fear_1)
+random_fear1_name = fear_name_list[random_fear_1]
+print(random_fear1_name)
+
+random_fear_2 = random_fears[1]
+print(random_fear_2)
+random_fear2_name = fear_name_list[random_fear_2]
+print(random_fear2_name)
+
+random_fear_3 = random_fears[2]
+print(random_fear_3)
+random_fear3_name = fear_name_list[random_fear_3]
+print(random_fear3_name)
+
+
 
 
 print(random_phobia)
 print("correct fear for {} is {}".format(correct_phobia, correct_fear))
+

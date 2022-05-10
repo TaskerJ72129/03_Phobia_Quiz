@@ -67,17 +67,19 @@ class Quiz:
                                         font="Arial 10", padx=10, pady=10, bg="#F8F9FA")
         self.question_label.grid(row=2)
         
+        answer1 = "answer 1"
+        answer2 = "answer 2"
 
         # Answer buttons go here (row 3)
         self.box_frame = Frame(self.quiz_frame, bg="#F8F9FA")
         self.box_frame.grid(row=3, pady=10)
 
-        self.answer_button_1 = Button(self.box_frame, text="Answer buttons", bg="#CED4DA",
+        self.answer_button_1 = Button(self.box_frame, text=answer1, bg="#CED4DA",
                                   font="Arial 15 bold", width=20, padx=10, pady=10)
         self.answer_button_1.grid(row=0, column=1, padx=2, pady=2)
 
 
-        self.answer_button_2 = Button(self.box_frame, text="Answer Buttons", bg="#CED4DA",
+        self.answer_button_2 = Button(self.box_frame, text=answer2, bg="#CED4DA",
                                   font="Arial 15 bold", width=20, padx=10, pady=10)
         self.answer_button_2.grid(row=0, column=2, padx=2, pady=2)
 
