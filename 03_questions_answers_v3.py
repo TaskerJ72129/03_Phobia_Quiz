@@ -27,7 +27,7 @@ fear_name_list = ['darkness', 'noise', 'heights', 'flying', 'open spaces', 'cros
 'isolation', 'bacteria', 'falling', 'frogs', 'needles', 'books', 'ugliness', 'cancer', 'mirrors', 'chemicals', 'happiness', 'bats', 'colours', 'clocks', 'time passing', 'food', 
 'closed spaces', 'cemetries', 'clowns', 'computers', 'dogs', 'demons', 'trees', 'dentists', 'houses', 'vomiting', 'crowds', 'insects', 'youth', 'horses', 'work', 'cold', 'marriage', 
 'bridges', 'aging', 'germs', 'balloons', 'public speaking', 'bad breath', 'sunlight', 'worms', 'blood', 'reptiles', '666', 'travel', 'water', 'illness', 'fish', 'insects', 'buttons', 
-'butteflies', 'tornadoes or hurricanes', 'cooking', 'black', 'bees', 'being alone', 'mice', 'ants', 'death', 'new things', 'night', 'hospitals', 'numbers', 'darkness', 
+'butterflies', 'tornadoes or hurricanes', 'cooking', 'black', 'bees', 'being alone', 'mice', 'ants', 'death', 'new things', 'night', 'hospitals', 'numbers', 'darkness', 
 'weight gain', 'eyes', 'dreams', 'snakes', 'birds', 'smells', 'shellfish', 'everything', 'babies and children', 'medicine', 'ghosts', 'fear', 'loud sounds', 'beards', 'purple', 
 'flying', 'fire', 'radioactivity', 'roller coasters', 'trains', 'people', 'sleep', 'graves', 'technology', '4', 'sea', 'dying', 'heat', 'poisons', 'injury', 'hair loss', '13', 
 'driving', 'yellow', 'foreigners'
@@ -73,13 +73,13 @@ print(random_num)
 fear_answers_list = [correct_fear, random_fear1_name, random_fear2_name, random_fear3_name]
 print(fear_answers_list)
 
-answer1 = fear_answers_list[random_num[0]]
+answer1 = fear_answers_list[random_num[0]-1]
 print(answer1)
-answer2 = fear_answers_list[random_num[1]]
+answer2 = fear_answers_list[random_num[1]-1]
 print(answer2)
-answer3 = fear_answers_list[random_num[2]]
+answer3 = fear_answers_list[random_num[2]-1]
 print(answer3)
-answer4 = fear_answers_list[random_num[3]]
+answer4 = fear_answers_list[random_num[3]-1]
 print(answer4)
 
 
