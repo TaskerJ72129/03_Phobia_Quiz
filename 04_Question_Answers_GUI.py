@@ -1,4 +1,5 @@
 from tkinter import *
+import random
 
 
 class Start:
@@ -40,6 +41,7 @@ class Start:
 
 class Quiz:
     def __init__(self,partner):
+
         
         # GUI Setup
         self.quiz_box = Toplevel()
@@ -62,11 +64,11 @@ class Quiz:
         self.question_number_label.grid(row=1)
 
         # Question Label
-        self.question_label = Label(self.quiz_frame, wrap=300, justify=LEFT,
+        self.question_label = Label(self.quiz_frame, wrap=600, justify=LEFT,
                                         text="Question goes here",
-                                        font="Arial 10", padx=10, pady=10, bg="#F8F9FA")
+                                        font="Arial 16", padx=10, pady=10, bg="#F8F9FA")
         self.question_label.grid(row=2)
-        
+
         answer1 = "answer 1"
         answer2 = "answer 2"
 
@@ -99,10 +101,10 @@ class Quiz:
 
         self.next_button = Button(self.next_button_frame, text="Next Question", font=("Arial 14 bold"),
                                    bg="#CED4DA", 
-                                   command=lambda: self.to_stats(self.round_stats_list, self.quiz_stats_list))
+                                   command=self.question_and_answers)
         self.next_button.grid(row=0, column=2, padx=2)
 
-        self.next_button.config(state=DISABLED)
+        # self.next_button.config(state=DISABLED)
     
         # Help and Quiz Stats button (row 6)
         self.help_export_frame = Frame(self.quiz_frame, bg="#F8F9FA")
@@ -124,9 +126,71 @@ class Quiz:
                                   bg="#343a40", fg="white", font="Arial 15 bold", width=20,
                                   command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=7, pady=10)
-    
+
+
     def question_and_answers(self):
-        print()
+        
+        phobia_list = ['Achluophobia ', 'Acousticophobia ', 'Acrophobia ', 'Aerophobia ', 'Agoraphobia ', 'Agyrophobia ', 'Aichmophobia ', 'Ailurophobia ', 'Algophobia ', 'Ancraophobia ', 
+        'Aquaphobia ', 'Arachnophobia ', 'Astraphobia ', 'Autophobia ', 'Bacteriophobia ', 'Basophobia ', 'Batrachophobia ', 'Belonephobia ', 'Bibliophobia ', 'Cacophobia ', 'Carcinophobia ', 
+        'Catoptrophobia ', 'Chemophobia ', 'Cherophobia ', 'Chiroptophobia ', 'Chromophobia ', 'Chronomentrophobia ', 'Chronophobia ', 'Cibophobia ', 'Claustrophobia ', 'Coimetrophobia ', 
+        'Coulrophobia ', 'Cyberphobia ', 'Cynophobia ', 'Demonophobia ', 'Dendrophobia ', 'Dentophobia ', 'Domatophobia ', 'Emetophobia ', 'Enochlophobia ', 'Entomophobia ', 'Ephebiphobia ', 
+        'Equinophobia ', 'Ergophobia ', 'Frigophobia ', 'Gamophobia ', 'Gephyrophobia ', 'Gerascophobia ', 'Germophobia ', 'Globophobia ', 'Glossophobia ', 'Halitophobia ', 'Heliophobia ', 
+        'Helminthophobia ', 'Hemophobia ', 'Herpetophobia ', 'Hexakosioihexekontahexaphobia ', 'Hodophobia ', 'Hydrophobia ', 'Hypochondria ', 'Ichthyophobia ', 'Insectophobia ', 'Koumpounophobia ', 
+        'Lepidopterophobia ', 'Lilapsophobia ', 'Mageirocophobia ', 'Melanophobia ', 'Melissophobia ', 'Monophobia ', 'Musophobia ', 'Myrmecophobia ', 'Necrophobia ', 'Neophobia ', 'Noctiphobia ', 
+        'Nosocomephobia ', 'Numerophobia ', 'Nyctophobia ', 'Obesophobia ', 'Ommetaphobia ', 'Oneirophobia ', 'Ophidiophobia ', 'Ornithophobia ', 'Osmophobia ', 'Ostraconophobia ', 'Panphobia ', 
+        'pediaphobia ', 'Pharmacophobia ', 'Phasmophobia ', 'Phobophobia ', 'Phonophobia ', 'Pogonophobia ', 'Porphyrophobia ', 'Pteromerhanophobia ', 'Pyrophobia ', 'Radiophobia ', 
+        'Siderodromophobia ', 'Sociophobia ', 'Somniphobia ', 'Taphophobia ', 'Technophobia ', 'Tetraphobia ', 'Thalassophobia ', 'Thanatophobia ', 'Thermophobia ', 
+        'Toxiphobia ', 'Traumatophobia ', 'Trichophobia ', 'Triskaidekaphobia ','Vehophobia ', 'Xanthophobia ', 'Xenophobia '
+        ]
+
+        fear_name_list = ['darkness', 'noise', 'heights', 'flying', 'open spaces', 'crossing streets', 'sharp objects', 'cats', 'pain', 'wind', 'water', 'spiders', 'thunder and lightning',
+        'isolation', 'bacteria', 'falling', 'frogs', 'needles', 'books', 'ugliness', 'cancer', 'mirrors', 'chemicals', 'happiness', 'bats', 'colours', 'clocks', 'time passing', 'food', 
+        'closed spaces', 'cemetries', 'clowns', 'computers', 'dogs', 'demons', 'trees', 'dentists', 'houses', 'vomiting', 'crowds', 'insects', 'youth', 'horses', 'work', 'cold', 'marriage', 
+        'bridges', 'aging', 'germs', 'balloons', 'public speaking', 'bad breath', 'sunlight', 'worms', 'blood', 'reptiles', '666', 'travel', 'water', 'illness', 'fish', 'insects', 'buttons', 
+        'butterflies', 'tornadoes or hurricanes', 'cooking', 'black', 'bees', 'being alone', 'mice', 'ants', 'death', 'new things', 'night', 'hospitals', 'numbers', 'darkness', 
+        'weight gain', 'eyes', 'dreams', 'snakes', 'birds', 'smells', 'shellfish', 'everything', 'babies and children', 'medicine', 'ghosts', 'fear', 'loud sounds', 'beards', 'purple', 
+        'flying', 'fire', 'radioactivity', 'trains', 'people', 'sleep', 'graves', 'technology', '4', 'sea', 'dying', 'heat', 'poisons', 'injury', 'hair loss', '13', 
+        'driving', 'yellow', 'foreigners'
+        ]
+
+        random_phobia = random.randint(1, len(phobia_list))
+        correct_phobia = phobia_list[random_phobia]
+        print("{}is the fear of:".format(correct_phobia))
+
+        correct_fear = fear_name_list[random_phobia]
+        print(correct_fear)
+        
+        phobia_list.pop(random_phobia)
+        fear_name_list.pop(random_phobia)
+
+        random_fears = random.sample(range(1, len(fear_name_list)-1), 3)
+
+        random_fear_1 = random_fears[0]
+        random_fear1_name = fear_name_list[random_fear_1]
+
+        random_fear_2 = random_fears[1]
+        random_fear2_name = fear_name_list[random_fear_2]
+
+        random_fear_3 = random_fears[2]
+        random_fear3_name = fear_name_list[random_fear_3]
+
+        random_num = random.sample(range(1,5),4)
+
+        fear_answers_list = [correct_fear, random_fear1_name, random_fear2_name, random_fear3_name]
+
+        answer1 = fear_answers_list[random_num[0]-1]
+        answer2 = fear_answers_list[random_num[1]-1]
+        answer3 = fear_answers_list[random_num[2]-1]
+        answer4 = fear_answers_list[random_num[3]-1]
+
+        self.answer_button_1.config(text=answer1)
+        self.answer_button_2.config(text=answer2)
+        self.answer_button_3.config(text=answer3)
+        self.answer_button_4.config(text=answer4)
+
+        question = "{}is the fear of:".format(correct_phobia)
+        self.question_label.config(text=question)
+
 
     def to_quit(self):
         root.destroy()
@@ -137,6 +201,7 @@ class Quiz:
 
     def to_stats(self, quiz_history, quiz_stats):
         QuizStats(self, quiz_history, quiz_stats)
+    
 
 
 

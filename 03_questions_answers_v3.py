@@ -84,11 +84,6 @@ print(answer4)
 
 
 
-
-
-
-
-
 print(random_phobia)
 print("correct fear for {} is {}".format(correct_phobia, correct_fear))
 
