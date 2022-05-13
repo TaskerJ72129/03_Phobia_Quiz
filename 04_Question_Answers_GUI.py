@@ -42,6 +42,8 @@ class Start:
 class Quiz:
     def __init__(self,partner):
 
+    
+
         self.phobia_list = ['Achluophobia ', 'Acousticophobia ', 'Acrophobia ', 'Aerophobia ', 'Agoraphobia ', 'Agyrophobia ', 'Aichmophobia ', 'Ailurophobia ', 'Algophobia ', 'Ancraophobia ', 
         'Aquaphobia ', 'Arachnophobia ', 'Astraphobia ', 'Autophobia ', 'Bacteriophobia ', 'Basophobia ', 'Batrachophobia ', 'Belonephobia ', 'Bibliophobia ', 'Cacophobia ', 'Carcinophobia ', 
         'Catoptrophobia ', 'Chemophobia ', 'Cherophobia ', 'Chiroptophobia ', 'Chromophobia ', 'Chronomentrophobia ', 'Chronophobia ', 'Cibophobia ', 'Claustrophobia ', 'Coimetrophobia ', 
@@ -155,13 +157,15 @@ class Quiz:
                                   command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=7, pady=10)
 
+        self.question_and_answers()
+
 
     def question_and_answers(self):
         self.round_num += 1
         
 
 
-        random_phobia = random.randint(1, len(self.phobia_list))
+        random_phobia = random.randint(0, (len(self.phobia_list)-1))
         correct_phobia = self.phobia_list[random_phobia]
         print("{}is the fear of:".format(correct_phobia))
 
