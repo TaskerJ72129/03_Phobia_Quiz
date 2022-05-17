@@ -67,6 +67,8 @@ class Quiz:
         'driving', 'yellow', 'foreigners'
         ]
 
+        self.all_fears = self.fear_name_list
+
         
         # GUI Setup
         self.quiz_box = Toplevel()
@@ -162,7 +164,6 @@ class Quiz:
 
     def question_and_answers(self):
         self.round_num += 1
-        
 
 
         random_phobia = random.randint(0, (len(self.phobia_list)-1))
@@ -207,6 +208,10 @@ class Quiz:
 
         question = "{}is the fear of:".format(correct_phobia)
         self.question_label.config(text=question)
+
+    def right_wrong(self):
+        print()
+
 
     def to_quit(self):
         root.destroy()
