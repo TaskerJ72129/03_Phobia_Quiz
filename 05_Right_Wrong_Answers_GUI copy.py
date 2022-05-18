@@ -122,8 +122,9 @@ class Quiz:
                                   font="Arial 15 bold", width=20, padx=10, pady=10)
         self.answer_button_3.grid(row=1, column=1, padx=2, pady=2)
 
-        self.answer_button_4 = Button(self.box_frame, text="Answer Buttons", bg="#CED4DA",
-                                  font="Arial 15 bold", width=20, padx=10, pady=10)
+        self.answer_button_4 = Button(self.box_frame, text="self.answer_button_4", bg="#CED4DA",
+                                  font="Arial 15 bold", width=20, padx=10, pady=10,
+                                  command=self.right_wrong)
         self.answer_button_4.grid(row=1, column=2, padx=2, pady=2)
 
 
@@ -209,6 +210,10 @@ class Quiz:
         question = "{}is the fear of:".format(correct_phobia)
         self.question_label.config(text=question)
 
+    def right_wrong(self):
+        print()
+        print(self.answer_button_4['text'])
+        print(self.correct_fear)
 
 
     def to_quit(self):
