@@ -40,7 +40,7 @@ class Start:
         root.withdraw()
 
 class Quiz:
-    def __init__(self,partner):
+    def __init__(self, partner):
 
     
 
@@ -109,22 +109,25 @@ class Quiz:
         self.box_frame.grid(row=3, pady=10)
 
         self.answer_button_1 = Button(self.box_frame, text=answer1, bg="#CED4DA",
-                                  font="Arial 15 bold", width=20, padx=10, pady=10)
+                                  font="Arial 15 bold", width=20, padx=10, pady=10,
+                                  command=lambda: self.right_wrong(1))
         self.answer_button_1.grid(row=0, column=1, padx=2, pady=2)
 
 
         self.answer_button_2 = Button(self.box_frame, text=answer2, bg="#CED4DA",
-                                  font="Arial 15 bold", width=20, padx=10, pady=10)
+                                  font="Arial 15 bold", width=20, padx=10, pady=10,
+                                  command=lambda: self.right_wrong(2))
         self.answer_button_2.grid(row=0, column=2, padx=2, pady=2)
 
 
         self.answer_button_3 = Button(self.box_frame, text="Answer Buttons", bg="#CED4DA",
-                                  font="Arial 15 bold", width=20, padx=10, pady=10)
+                                  font="Arial 15 bold", width=20, padx=10, pady=10,
+                                  command=lambda: self.right_wrong(3))
         self.answer_button_3.grid(row=1, column=1, padx=2, pady=2)
 
         self.answer_button_4 = Button(self.box_frame, text="self.answer_button_4", bg="#CED4DA",
                                   font="Arial 15 bold", width=20, padx=10, pady=10,
-                                  command=self.right_wrong)
+                                  command=lambda: self.right_wrong(4))
         self.answer_button_4.grid(row=1, column=2, padx=2, pady=2)
 
 
@@ -164,6 +167,11 @@ class Quiz:
 
 
     def question_and_answers(self):
+        self.answer_button_1.config(bg="#CED4DA")
+        self.answer_button_2.config(bg="#CED4DA")
+        self.answer_button_3.config(bg="#CED4DA")
+        self.answer_button_4.config(bg="#CED4DA")
+
         self.round_num += 1
 
 
@@ -210,11 +218,29 @@ class Quiz:
         question = "{}is the fear of:".format(correct_phobia)
         self.question_label.config(text=question)
 
-    def right_wrong(self):
-        print()
-        print(self.answer_button_4['text'])
+    def right_wrong(self, button):
+        print(button)
+
+        if button == 1:
+            print(self.answer_button_1['text'])
+            if self.answer_button_1['text'] == self.correct_fear:
+                print("correct")
+                self.answer_button_1.config(bg="#4CBB17")
+            else:
+                print("incorrect")
+                self.answer_button_1.config(bg="#FF0000")
+        elif button == 2:
+            print(self.answer_button_2['text'])
+        elif button == 3:
+            print(self.answer_button_3['text'])
+        else:
+            print(self.answer_button_4['text'])
+
+        
+
         print(self.correct_fear)
 
+        
 
     def to_quit(self):
         root.destroy()
