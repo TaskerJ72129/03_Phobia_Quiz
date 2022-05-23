@@ -167,6 +167,8 @@ class Quiz:
 
 
     def question_and_answers(self):
+        self.next_button.config(state=DISABLED)
+
         self.answer_button_1.config(bg="#CED4DA")
         self.answer_button_2.config(bg="#CED4DA")
         self.answer_button_3.config(bg="#CED4DA")
@@ -220,6 +222,11 @@ class Quiz:
 
     def right_wrong(self, button):
         print(button)
+
+        self.answer_button_1.config(state=DISABLED)
+        self.answer_button_2.config(state=DISABLED)
+        self.answer_button_3.config(state=DISABLED)
+        self.answer_button_4.config(state=DISABLED)
 
         if button == 1:
             print(self.answer_button_1['text'])
