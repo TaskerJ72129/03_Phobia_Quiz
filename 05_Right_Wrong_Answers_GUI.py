@@ -165,18 +165,26 @@ class Quiz:
 
         self.question_and_answers()
 
-
+    # generates questions and answers
     def question_and_answers(self):
+
+        # resets buttons for next question
         self.next_button.config(state=DISABLED)
+
+        self.answer_button_1.config(state=NORMAL)
+        self.answer_button_2.config(state=NORMAL)
+        self.answer_button_3.config(state=NORMAL)
+        self.answer_button_4.config(state=NORMAL)
 
         self.answer_button_1.config(bg="#CED4DA")
         self.answer_button_2.config(bg="#CED4DA")
         self.answer_button_3.config(bg="#CED4DA")
         self.answer_button_4.config(bg="#CED4DA")
 
+        # add to round counter
         self.round_num += 1
 
-
+        # generates correct phobia
         random_phobia = random.randint(0, (len(self.phobia_list)-1))
         correct_phobia = self.phobia_list[random_phobia]
         print("{}is the fear of:".format(correct_phobia))
@@ -184,11 +192,13 @@ class Quiz:
         self.correct_fear = self.fear_name_list[random_phobia]
         print(self.correct_fear)
         
+        # removes used phobia from list (until end of game)
         self.phobia_list.pop(random_phobia)
         self.fear_name_list.pop(random_phobia)
         print(len(self.phobia_list))
         print(len(self.fear_name_list))
 
+        # generates 3 random fears
         random_fears = random.sample(range(1, len(self.fear_name_list)-1), 3)
 
         random_fear_1 = random_fears[0]
@@ -200,8 +210,8 @@ class Quiz:
         random_fear_3 = random_fears[2]
         random_fear3_name = self.fear_name_list[random_fear_3]
 
+        # arranges random and correct fears randomly
         random_num = random.sample(range(1,5),4)
-
         fear_answers_list = [self.correct_fear, random_fear1_name, random_fear2_name, random_fear3_name]
 
         answer1 = fear_answers_list[random_num[0]-1]
@@ -209,57 +219,86 @@ class Quiz:
         answer3 = fear_answers_list[random_num[2]-1]
         answer4 = fear_answers_list[random_num[3]-1]
 
+        # assigns randomly ordered fears to the buttons
         self.answer_button_1.config(text=answer1)
         self.answer_button_2.config(text=answer2)
         self.answer_button_3.config(text=answer3)
         self.answer_button_4.config(text=answer4)
 
+        # question / round number
         question_number = "Question {}".format(self.round_num)
         self.question_number_label.config(text=question_number)
 
+        # question
         question = "{}is the fear of:".format(correct_phobia)
         self.question_label.config(text=question)
 
+    # tells user if answer is right or wrong
     def right_wrong(self, button):
-        print(button)
 
+        # disables answer buttons after user chooses one
         self.answer_button_1.config(state=DISABLED)
         self.answer_button_2.config(state=DISABLED)
         self.answer_button_3.config(state=DISABLED)
         self.answer_button_4.config(state=DISABLED)
 
+        correct = False
+
+        # checks if answers are correct or incorrect and colours buttons accordingly (red if wrong and green if right)
         if button == 1:
             print(self.answer_button_1['text'])
             if self.answer_button_1['text'] == self.correct_fear:
                 print("correct")
                 self.answer_button_1.config(bg="#4CBB17")
+                correct = True
             else:
                 print("incorrect")
                 self.answer_button_1.config(bg="#FF0000")
+                correct = False
         elif button == 2:
             print(self.answer_button_2['text'])
             if self.answer_button_2['text'] == self.correct_fear:
                 print("correct")
                 self.answer_button_2.config(bg="#4CBB17")
+                correct = True
             else:
                 print("incorrect")
                 self.answer_button_2.config(bg="#FF0000")
+                correct = False
         elif button == 3:
             print(self.answer_button_3['text'])
             if self.answer_button_3['text'] == self.correct_fear:
                 print("correct")
                 self.answer_button_3.config(bg="#4CBB17")
+                correct = True
             else:
                 print("incorrect")
                 self.answer_button_3.config(bg="#FF0000")
+                correct = False
         else:
             print(self.answer_button_4['text'])
             if self.answer_button_4['text'] == self.correct_fear:
                 print("correct")
                 self.answer_button_4.config(bg="#4CBB17")
+                correct = True
             else:
                 print("incorrect")
                 self.answer_button_4.config(bg="#FF0000")
+                correct = False
+
+        # if user chooses wrong answer highlight correct answer in orange
+        if correct == False:
+            if self.answer_button_1['text'] == self.correct_fear:
+                self.answer_button_1.config(bg="#FFA100")
+            elif self.answer_button_2['text'] == self.correct_fear:
+                self.answer_button_2.config(bg="#FFA100")
+            elif self.answer_button_3['text'] == self.correct_fear:
+                self.answer_button_3.config(bg="#FFA100")
+            elif self.answer_button_4['text'] == self.correct_fear:
+                self.answer_button_4.config(bg="#FFA100")
+        else:
+            print()
+
 
         
 
