@@ -140,7 +140,7 @@ class Quiz:
                                    command=self.question_and_answers)
         self.next_button.grid(row=0, column=2, padx=2)
 
-        # self.next_button.config(state=DISABLED)
+        self.next_button.config(state=DISABLED)
     
         # Help and Quiz Stats button (row 6)
         self.help_export_frame = Frame(self.quiz_frame, bg="#F8F9FA")
@@ -231,15 +231,33 @@ class Quiz:
                 self.answer_button_1.config(bg="#FF0000")
         elif button == 2:
             print(self.answer_button_2['text'])
+            if self.answer_button_2['text'] == self.correct_fear:
+                print("correct")
+                self.answer_button_2.config(bg="#4CBB17")
+            else:
+                print("incorrect")
+                self.answer_button_2.config(bg="#FF0000")
         elif button == 3:
             print(self.answer_button_3['text'])
+            if self.answer_button_3['text'] == self.correct_fear:
+                print("correct")
+                self.answer_button_3.config(bg="#4CBB17")
+            else:
+                print("incorrect")
+                self.answer_button_3.config(bg="#FF0000")
         else:
             print(self.answer_button_4['text'])
+            if self.answer_button_4['text'] == self.correct_fear:
+                print("correct")
+                self.answer_button_4.config(bg="#4CBB17")
+            else:
+                print("incorrect")
+                self.answer_button_4.config(bg="#FF0000")
 
         
 
         print(self.correct_fear)
-
+        self.next_button.config(state=NORMAL)
         
 
     def to_quit(self):
