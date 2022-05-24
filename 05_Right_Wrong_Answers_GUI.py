@@ -17,7 +17,7 @@ class Start:
         # initial instructions (row 1)
         self.quiz_intructions = Label(self.start_frame, font="Arial 10 italic", bg="#CAF0F8",
                                          text="This is a quiz where you get given a question asking what a certain phobia is the fear of and you get given 4 multiple choice answers to choose from."
-                                              "There are 113 Phobias in this quiz shown in a random order but you can check your stats and quit at any point",
+                                              "There are 108 Phobias in this quiz shown in a random order but you can check your stats and quit at any point",
                                          wrap=275, justify=LEFT, padx=10, pady=10)
         self.quiz_intructions.grid(row=1)
 
@@ -170,7 +170,7 @@ class Quiz:
 
         # resets buttons for next question
         self.next_button.config(state=DISABLED)
-
+ 
         self.answer_button_1.config(state=NORMAL)
         self.answer_button_2.config(state=NORMAL)
         self.answer_button_3.config(state=NORMAL)
