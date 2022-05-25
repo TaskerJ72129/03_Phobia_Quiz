@@ -36,14 +36,13 @@ fear_name_list = ['darkness', 'noise', 'heights', 'flying', 'open spaces', 'cros
 
 # get random phobia and correct fear name
 random_phobia = random.randint(1, len(phobia_list))
-print(random_phobia)
 correct_phobia = phobia_list[random_phobia]
 print("{}is the fear of:".format(correct_phobia))
-print(random_phobia)
 correct_fear = fear_name_list[random_phobia]
 print(correct_fear)
 
 # remove used phobia and fear name from list
+print(len(phobia_list))
 phobia_list.pop(random_phobia)
 fear_name_list.pop(random_phobia)
 print(len(phobia_list))
@@ -83,10 +82,6 @@ print(answer3)
 answer4 = fear_answers_list[random_num[3]-1]
 print(answer4)
 
-
-
-print(random_phobia)
-print("correct fear for {} is {}".format(correct_phobia, correct_fear))
 
 
 
