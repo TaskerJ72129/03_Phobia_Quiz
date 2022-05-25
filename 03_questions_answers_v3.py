@@ -34,21 +34,21 @@ fear_name_list = ['darkness', 'noise', 'heights', 'flying', 'open spaces', 'cros
 ]
 
 
-
+# get random phobia and correct fear name
 random_phobia = random.randint(1, len(phobia_list))
 print(random_phobia)
 correct_phobia = phobia_list[random_phobia]
 print("{}is the fear of:".format(correct_phobia))
-
 print(random_phobia)
 correct_fear = fear_name_list[random_phobia]
 print(correct_fear)
+
+# remove used phobia and fear name from list
 phobia_list.pop(random_phobia)
 fear_name_list.pop(random_phobia)
 print(len(phobia_list))
 
-
-
+# generate 3 random (different) fear names
 random_fears = random.sample(range(1, len(fear_name_list)-1), 3)
 print(random_fears)
 
@@ -67,6 +67,7 @@ print(random_fear_3)
 random_fear3_name = fear_name_list[random_fear_3]
 print(random_fear3_name)
 
+# put all 4 answers in random order
 random_num = random.sample(range(1,5),4)
 print(random_num)
 

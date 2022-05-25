@@ -32,11 +32,9 @@ print(fear_name_list)
 print(len(fear_name_list))
 
 random_phobia = random.randint(1, len(phobia_list))
-print(random_phobia)
 correct_phobia = phobia_list[random_phobia]
 print("{}is the fear of:".format(correct_phobia))
 
-print(random_phobia)
 correct_fear = fear_name_list[random_phobia]
 print(correct_fear)
 phobia_list.pop(random_phobia)
@@ -45,31 +43,21 @@ print(len(phobia_list))
 
 random_fear1 = random.randint(1, (len(fear_name_list)-1))
 random_fear1_name = fear_name_list[random_fear1]
-print(random_fear1)
 print(random_fear1_name)
 fear_name_list.pop(random_fear1)
 
 random_fear2 = random.randint(1, (len(fear_name_list)-1))
 random_fear2_name = fear_name_list[random_fear2]
-print(random_fear2)
 print(random_fear2_name)
 fear_name_list.pop(random_fear2)
 
 random_fear3 = random.randint(1, (len(fear_name_list)-1))
 random_fear3_name = fear_name_list[random_fear3]
-print(random_fear3)
 print(random_fear3_name)
 fear_name_list.pop(random_fear3)
 
-random_fear4 = (len(fear_name_list)-1)
-random_fear4_name = fear_name_list[random_fear4]
-print(random_fear4)
-print(random_fear4_name)
-fear_name_list.pop(random_fear4)
-
 print(len(fear_name_list))
 
-fear_name_list.insert(random_fear4, random_fear4_name)
 fear_name_list.insert(random_fear2, random_fear3_name)
 fear_name_list.insert(random_fear2, random_fear2_name)
 fear_name_list.insert(random_fear1, random_fear1_name)
