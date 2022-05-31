@@ -17,7 +17,7 @@ class Start:
         # initial instructions (row 1)
         self.quiz_intructions = Label(self.start_frame, font="Arial 10 italic", bg="#CAF0F8",
                                          text="This is a quiz where you get given a question asking what a certain phobia is the fear of and you get given 4 multiple choice answers to choose from."
-                                              "There are 108 Phobias in this quiz shown in a random order but you can check your stats and quit at any point",
+                                              "There are 113 Phobias in this quiz shown in a random order but you can check your stats and quit at any point",
                                          wrap=275, justify=LEFT, padx=10, pady=10)
         self.quiz_intructions.grid(row=1)
 
@@ -40,16 +40,16 @@ class Start:
         root.withdraw()
 
 class Quiz:
-    def __init__(self, partner):
+    def __init__(self,partner):
 
     
 
-        self.phobia_list = ['Achluophobia ', 'Acousticophobia ', 'Acrophobia ', 'Agoraphobia ', 'Agyrophobia ', 'Aichmophobia ', 'Ailurophobia ', 'Algophobia ', 'Ancraophobia ', 
-        'Arachnophobia ', 'Astraphobia ', 'Autophobia ', 'Bacteriophobia ', 'Basophobia ', 'Batrachophobia ', 'Belonephobia ', 'Bibliophobia ', 'Cacophobia ', 'Carcinophobia ', 
+        self.phobia_list = ['Achluophobia ', 'Acousticophobia ', 'Acrophobia ', 'Aerophobia ', 'Agoraphobia ', 'Agyrophobia ', 'Aichmophobia ', 'Ailurophobia ', 'Algophobia ', 'Ancraophobia ', 
+        'Aquaphobia ', 'Arachnophobia ', 'Astraphobia ', 'Autophobia ', 'Bacteriophobia ', 'Basophobia ', 'Batrachophobia ', 'Belonephobia ', 'Bibliophobia ', 'Cacophobia ', 'Carcinophobia ', 
         'Catoptrophobia ', 'Chemophobia ', 'Cherophobia ', 'Chiroptophobia ', 'Chromophobia ', 'Chronomentrophobia ', 'Chronophobia ', 'Cibophobia ', 'Claustrophobia ', 'Coimetrophobia ', 
         'Coulrophobia ', 'Cyberphobia ', 'Cynophobia ', 'Demonophobia ', 'Dendrophobia ', 'Dentophobia ', 'Domatophobia ', 'Emetophobia ', 'Enochlophobia ', 'Entomophobia ', 'Ephebiphobia ', 
         'Equinophobia ', 'Ergophobia ', 'Frigophobia ', 'Gamophobia ', 'Gephyrophobia ', 'Gerascophobia ', 'Germophobia ', 'Globophobia ', 'Glossophobia ', 'Halitophobia ', 'Heliophobia ', 
-        'Helminthophobia ', 'Hemophobia ', 'Herpetophobia ', 'Hexakosioihexekontahexaphobia ', 'Hodophobia ', 'Hydrophobia ', 'Hypochondria ', 'Ichthyophobia ', 'Koumpounophobia ', 
+        'Helminthophobia ', 'Hemophobia ', 'Herpetophobia ', 'Hexakosioihexekontahexaphobia ', 'Hodophobia ', 'Hydrophobia ', 'Hypochondria ', 'Ichthyophobia ', 'Insectophobia ', 'Koumpounophobia ', 
         'Lepidopterophobia ', 'Lilapsophobia ', 'Mageirocophobia ', 'Melanophobia ', 'Melissophobia ', 'Monophobia ', 'Musophobia ', 'Myrmecophobia ', 'Necrophobia ', 'Neophobia ', 'Noctiphobia ', 
         'Nosocomephobia ', 'Numerophobia ', 'Nyctophobia ', 'Obesophobia ', 'Ommetaphobia ', 'Oneirophobia ', 'Ophidiophobia ', 'Ornithophobia ', 'Osmophobia ', 'Ostraconophobia ', 'Panphobia ', 
         'pediaphobia ', 'Pharmacophobia ', 'Phasmophobia ', 'Phobophobia ', 'Phonophobia ', 'Pogonophobia ', 'Porphyrophobia ', 'Pteromerhanophobia ', 'Pyrophobia ', 'Radiophobia ', 
@@ -57,10 +57,10 @@ class Quiz:
         'Toxiphobia ', 'Traumatophobia ', 'Trichophobia ', 'Triskaidekaphobia ','Vehophobia ', 'Xanthophobia ', 'Xenophobia '
         ]
 
-        self.fear_name_list = ['darkness', 'noise', 'heights', 'open spaces', 'crossing streets', 'sharp objects', 'cats', 'pain', 'wind', 'spiders', 'thunder and lightning',
+        self.fear_name_list = ['darkness', 'noise', 'heights', 'flying', 'open spaces', 'crossing streets', 'sharp objects', 'cats', 'pain', 'wind', 'water', 'spiders', 'thunder and lightning',
         'isolation', 'bacteria', 'falling', 'frogs', 'needles', 'books', 'ugliness', 'cancer', 'mirrors', 'chemicals', 'happiness', 'bats', 'colours', 'clocks', 'time passing', 'food', 
         'closed spaces', 'cemetries', 'clowns', 'computers', 'dogs', 'demons', 'trees', 'dentists', 'houses', 'vomiting', 'crowds', 'insects', 'youth', 'horses', 'work', 'cold', 'marriage', 
-        'bridges', 'aging', 'germs', 'balloons', 'public speaking', 'bad breath', 'sunlight', 'worms', 'blood', 'reptiles', '666', 'travel', 'water', 'illness', 'fish', 'buttons', 
+        'bridges', 'aging', 'germs', 'balloons', 'public speaking', 'bad breath', 'sunlight', 'worms', 'blood', 'reptiles', '666', 'travel', 'water', 'illness', 'fish', 'insects', 'buttons', 
         'butterflies', 'tornadoes or hurricanes', 'cooking', 'black', 'bees', 'being alone', 'mice', 'ants', 'death', 'new things', 'night', 'hospitals', 'numbers', 'darkness', 
         'weight gain', 'eyes', 'dreams', 'snakes', 'birds', 'smells', 'shellfish', 'everything', 'babies and children', 'medicine', 'ghosts', 'fear', 'loud sounds', 'beards', 'purple', 
         'flying', 'fire', 'radioactivity', 'trains', 'people', 'sleep', 'graves', 'technology', '4', 'sea', 'dying', 'heat', 'poisons', 'injury', 'hair loss', '13', 
@@ -109,25 +109,21 @@ class Quiz:
         self.box_frame.grid(row=3, pady=10)
 
         self.answer_button_1 = Button(self.box_frame, text=answer1, bg="#CED4DA",
-                                  font="Arial 15 bold", width=20, padx=10, pady=10,
-                                  command=lambda: self.right_wrong(1))
+                                  font="Arial 15 bold", width=20, padx=10, pady=10)
         self.answer_button_1.grid(row=0, column=1, padx=2, pady=2)
 
 
         self.answer_button_2 = Button(self.box_frame, text=answer2, bg="#CED4DA",
-                                  font="Arial 15 bold", width=20, padx=10, pady=10,
-                                  command=lambda: self.right_wrong(2))
+                                  font="Arial 15 bold", width=20, padx=10, pady=10)
         self.answer_button_2.grid(row=0, column=2, padx=2, pady=2)
 
 
         self.answer_button_3 = Button(self.box_frame, text="Answer Buttons", bg="#CED4DA",
-                                  font="Arial 15 bold", width=20, padx=10, pady=10,
-                                  command=lambda: self.right_wrong(3))
+                                  font="Arial 15 bold", width=20, padx=10, pady=10)
         self.answer_button_3.grid(row=1, column=1, padx=2, pady=2)
 
-        self.answer_button_4 = Button(self.box_frame, text="self.answer_button_4", bg="#CED4DA",
-                                  font="Arial 15 bold", width=20, padx=10, pady=10,
-                                  command=lambda: self.right_wrong(4))
+        self.answer_button_4 = Button(self.box_frame, text="Answer Buttons", bg="#CED4DA",
+                                  font="Arial 15 bold", width=20, padx=10, pady=10)
         self.answer_button_4.grid(row=1, column=2, padx=2, pady=2)
 
 
@@ -140,7 +136,7 @@ class Quiz:
                                    command=self.question_and_answers)
         self.next_button.grid(row=0, column=2, padx=2)
 
-        self.next_button.config(state=DISABLED)
+        # self.next_button.config(state=DISABLED)
     
         # Help and Quiz Stats button (row 6)
         self.help_export_frame = Frame(self.quiz_frame, bg="#F8F9FA")
@@ -165,26 +161,11 @@ class Quiz:
 
         self.question_and_answers()
 
-    # generates questions and answers
+
     def question_and_answers(self):
-
-        # resets buttons for next question
-        self.next_button.config(state=DISABLED)
- 
-        self.answer_button_1.config(state=NORMAL)
-        self.answer_button_2.config(state=NORMAL)
-        self.answer_button_3.config(state=NORMAL)
-        self.answer_button_4.config(state=NORMAL)
-
-        self.answer_button_1.config(bg="#CED4DA")
-        self.answer_button_2.config(bg="#CED4DA")
-        self.answer_button_3.config(bg="#CED4DA")
-        self.answer_button_4.config(bg="#CED4DA")
-
-        # add to round counter
         self.round_num += 1
 
-        # generates correct phobia
+
         random_phobia = random.randint(0, (len(self.phobia_list)-1))
         correct_phobia = self.phobia_list[random_phobia]
         print("{}is the fear of:".format(correct_phobia))
@@ -192,13 +173,11 @@ class Quiz:
         self.correct_fear = self.fear_name_list[random_phobia]
         print(self.correct_fear)
         
-        # removes used phobia from list (until end of game)
         self.phobia_list.pop(random_phobia)
         self.fear_name_list.pop(random_phobia)
         print(len(self.phobia_list))
         print(len(self.fear_name_list))
 
-        # generates 3 random fears
         random_fears = random.sample(range(1, len(self.fear_name_list)-1), 3)
 
         random_fear_1 = random_fears[0]
@@ -210,8 +189,8 @@ class Quiz:
         random_fear_3 = random_fears[2]
         random_fear3_name = self.fear_name_list[random_fear_3]
 
-        # arranges random and correct fears randomly
         random_num = random.sample(range(1,5),4)
+
         fear_answers_list = [self.correct_fear, random_fear1_name, random_fear2_name, random_fear3_name]
 
         answer1 = fear_answers_list[random_num[0]-1]
@@ -219,92 +198,18 @@ class Quiz:
         answer3 = fear_answers_list[random_num[2]-1]
         answer4 = fear_answers_list[random_num[3]-1]
 
-        # assigns randomly ordered fears to the buttons
         self.answer_button_1.config(text=answer1)
         self.answer_button_2.config(text=answer2)
         self.answer_button_3.config(text=answer3)
         self.answer_button_4.config(text=answer4)
 
-        # question / round number
         question_number = "Question {}".format(self.round_num)
         self.question_number_label.config(text=question_number)
 
-        # question
-        question = "{}is the fear of".format(correct_phobia)
+        question = "{}is the fear of:".format(correct_phobia)
         self.question_label.config(text=question)
 
-    # tells user if answer is right or wrong
-    def right_wrong(self, button):
 
-        # disables answer buttons after user chooses one
-        self.answer_button_1.config(state=DISABLED)
-        self.answer_button_2.config(state=DISABLED)
-        self.answer_button_3.config(state=DISABLED)
-        self.answer_button_4.config(state=DISABLED)
-
-        correct = False
-
-        # checks if answers are correct or incorrect and colours buttons accordingly (red if wrong and green if right)
-        if button == 1:
-            print(self.answer_button_1['text'])
-            if self.answer_button_1['text'] == self.correct_fear:
-                print("correct")
-                self.answer_button_1.config(bg="#51ff00")
-                correct = True
-            else:
-                print("incorrect")
-                self.answer_button_1.config(bg="#FF0000")
-                correct = False
-        elif button == 2:
-            print(self.answer_button_2['text'])
-            if self.answer_button_2['text'] == self.correct_fear:
-                print("correct")
-                self.answer_button_2.config(bg="#51ff00")
-                correct = True
-            else:
-                print("incorrect")
-                self.answer_button_2.config(bg="#FF0000")
-                correct = False
-        elif button == 3:
-            print(self.answer_button_3['text'])
-            if self.answer_button_3['text'] == self.correct_fear:
-                print("correct")
-                self.answer_button_3.config(bg="#51ff00")
-                correct = True
-            else:
-                print("incorrect")
-                self.answer_button_3.config(bg="#FF0000")
-                correct = False
-        else:
-            print(self.answer_button_4['text'])
-            if self.answer_button_4['text'] == self.correct_fear:
-                print("correct")
-                self.answer_button_4.config(bg="#51ff00")
-                correct = True
-            else:
-                print("incorrect")
-                self.answer_button_4.config(bg="#FF0000")
-                correct = False
-
-        # if user chooses wrong answer highlight correct answer in orange
-        if correct == False:
-            if self.answer_button_1['text'] == self.correct_fear:
-                self.answer_button_1.config(bg="#FFA100")
-            elif self.answer_button_2['text'] == self.correct_fear:
-                self.answer_button_2.config(bg="#FFA100")
-            elif self.answer_button_3['text'] == self.correct_fear:
-                self.answer_button_3.config(bg="#FFA100")
-            elif self.answer_button_4['text'] == self.correct_fear:
-                self.answer_button_4.config(bg="#FFA100")
-        else:
-            print()
-
-
-        
-
-        print(self.correct_fear)
-        self.next_button.config(state=NORMAL)
-        
 
     def to_quit(self):
         root.destroy()
