@@ -249,53 +249,53 @@ class Quiz:
             print(self.answer_button_1['text'])
             if self.answer_button_1['text'] == self.correct_fear:
                 print("correct")
-                self.answer_button_1.config(bg="#51ff00")
+                self.answer_button_1.config(bg="#83cf5f")
                 correct = True
             else:
                 print("incorrect")
-                self.answer_button_1.config(bg="#FF0000")
+                self.answer_button_1.config(bg="#ff6b6b")
                 correct = False
         elif button == 2:
             print(self.answer_button_2['text'])
             if self.answer_button_2['text'] == self.correct_fear:
                 print("correct")
-                self.answer_button_2.config(bg="#51ff00")
+                self.answer_button_2.config(bg="#83cf5f")
                 correct = True
             else:
                 print("incorrect")
-                self.answer_button_2.config(bg="#FF0000")
+                self.answer_button_2.config(bg="#ff6b6b")
                 correct = False
         elif button == 3:
             print(self.answer_button_3['text'])
             if self.answer_button_3['text'] == self.correct_fear:
                 print("correct")
-                self.answer_button_3.config(bg="#51ff00")
+                self.answer_button_3.config(bg="#83cf5f")
                 correct = True
             else:
                 print("incorrect")
-                self.answer_button_3.config(bg="#FF0000")
+                self.answer_button_3.config(bg="#ff6b6b")
                 correct = False
         else:
             print(self.answer_button_4['text'])
             if self.answer_button_4['text'] == self.correct_fear:
                 print("correct")
-                self.answer_button_4.config(bg="#51ff00")
+                self.answer_button_4.config(bg="#83cf5f")   
                 correct = True
             else:
                 print("incorrect")
-                self.answer_button_4.config(bg="#FF0000")
+                self.answer_button_4.config(bg="#ff6b6b")
                 correct = False
 
         # if user chooses wrong answer highlight correct answer in orange
         if correct == False:
             if self.answer_button_1['text'] == self.correct_fear:
-                self.answer_button_1.config(bg="#FFA100")
+                self.answer_button_1.config(bg="#ffb73a")
             elif self.answer_button_2['text'] == self.correct_fear:
-                self.answer_button_2.config(bg="#FFA100")
+                self.answer_button_2.config(bg="#ffb73a")
             elif self.answer_button_3['text'] == self.correct_fear:
-                self.answer_button_3.config(bg="#FFA100")
+                self.answer_button_3.config(bg="#ffb73a")
             elif self.answer_button_4['text'] == self.correct_fear:
-                self.answer_button_4.config(bg="#FFA100")
+                self.answer_button_4.config(bg="#ffb73a")
         else:
             print()
 

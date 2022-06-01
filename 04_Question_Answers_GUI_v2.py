@@ -67,8 +67,16 @@ class Quiz:
         'driving', 'yellow', 'foreigners'
         ]
 
-        self.all_fears = self.fear_name_list
-
+        # duplicate fears list for random answers
+        self.all_fears = ['darkness', 'noise', 'heights', 'flying', 'open spaces', 'crossing streets', 'sharp objects', 'cats', 'pain', 'wind', 'water', 'spiders', 'thunder and lightning',
+        'isolation', 'bacteria', 'falling', 'frogs', 'needles', 'books', 'ugliness', 'cancer', 'mirrors', 'chemicals', 'happiness', 'bats', 'colours', 'clocks', 'time passing', 'food', 
+        'closed spaces', 'cemetries', 'clowns', 'computers', 'dogs', 'demons', 'trees', 'dentists', 'houses', 'vomiting', 'crowds', 'insects', 'youth', 'horses', 'work', 'cold', 'marriage', 
+        'bridges', 'aging', 'germs', 'balloons', 'public speaking', 'bad breath', 'sunlight', 'worms', 'blood', 'reptiles', '666', 'travel', 'water', 'illness', 'fish', 'insects', 'buttons', 
+        'butterflies', 'tornadoes or hurricanes', 'cooking', 'black', 'bees', 'being alone', 'mice', 'ants', 'death', 'new things', 'night', 'hospitals', 'numbers', 'darkness', 
+        'weight gain', 'eyes', 'dreams', 'snakes', 'birds', 'smells', 'shellfish', 'everything', 'babies and children', 'medicine', 'ghosts', 'fear', 'loud sounds', 'beards', 'purple', 
+        'flying', 'fire', 'radioactivity', 'trains', 'people', 'sleep', 'graves', 'technology', '4', 'sea', 'dying', 'heat', 'poisons', 'injury', 'hair loss', '13', 
+        'driving', 'yellow', 'foreigners'
+        ]
         
         # GUI Setup
         self.quiz_box = Toplevel()
@@ -177,17 +185,18 @@ class Quiz:
         self.fear_name_list.pop(random_phobia)
         print(len(self.phobia_list))
         print(len(self.fear_name_list))
+        print(len(self.all_fears))
 
-        random_fears = random.sample(range(1, len(self.fear_name_list)-1), 3)
+        random_fears = random.sample(range(1, len(self.all_fears)-1), 3)
 
         random_fear_1 = random_fears[0]
-        random_fear1_name = self.fear_name_list[random_fear_1]
+        random_fear1_name = self.all_fears[random_fear_1]
 
         random_fear_2 = random_fears[1]
-        random_fear2_name = self.fear_name_list[random_fear_2]
+        random_fear2_name = self.all_fears[random_fear_2]
 
         random_fear_3 = random_fears[2]
-        random_fear3_name = self.fear_name_list[random_fear_3]
+        random_fear3_name = self.all_fears[random_fear_3]
 
         random_num = random.sample(range(1,5),4)
 
