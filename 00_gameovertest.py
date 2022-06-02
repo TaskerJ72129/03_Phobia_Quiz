@@ -173,8 +173,11 @@ class Quiz:
     def question_and_answers(self):
         self.round_num += 1
 
+        try:
+            random_phobia = random.randint(0, (len(self.phobia_list)-1))
+        except:
+            
 
-        random_phobia = random.randint(0, (len(self.phobia_list)-1))
         correct_phobia = self.phobia_list[random_phobia]
         print("{}is the fear of:".format(correct_phobia))
 
