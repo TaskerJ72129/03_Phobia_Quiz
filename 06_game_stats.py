@@ -207,7 +207,7 @@ class Quiz:
         self.correct_fear = self.fear_name_list[random_phobia]
         print(self.correct_fear)
         
-        # removes used phobia from list (until end of game)
+        # removes used phobia from list (until end of Quiz)
         self.phobia_list.pop(random_phobia)
         self.fear_name_list.pop(random_phobia)
         print(len(self.phobia_list))
@@ -270,12 +270,14 @@ class Quiz:
         self.question_number_label.config(text=question_number)
 
         # question
-        question = "{}is the fear of".format(correct_phobia)
-        self.question_label.config(text=question)
+        self.question = "{}is the fear of".format(correct_phobia)
+        self.question_label.config(text=self.question)
 
     # tells user if answer is right or wrong
     def right_wrong(self, button):
 
+        number_correct = 0
+        number_wrong = 0
 
         # disables answer buttons after user chooses one
         self.answer_button_1.config(state=DISABLED)
@@ -291,6 +293,8 @@ class Quiz:
             print(self.answer_button_1['text'])
             if self.answer_button_1['text'] == self.correct_fear:
                 print("correct")
+                number_correct += 1
+
                 self.answer_button_1.config(bg="#83cf5f")
                 correct = True
             else:
@@ -302,6 +306,8 @@ class Quiz:
             print(self.answer_button_2['text'])
             if self.answer_button_2['text'] == self.correct_fear:
                 print("correct")
+                number_correct += 1
+                
                 self.answer_button_2.config(bg="#83cf5f")
                 correct = True
             else:
@@ -313,6 +319,8 @@ class Quiz:
             print(self.answer_button_3['text'])
             if self.answer_button_3['text'] == self.correct_fear:
                 print("correct")
+                number_correct += 1
+
                 self.answer_button_3.config(bg="#83cf5f")
                 correct = True
             else:
@@ -324,6 +332,7 @@ class Quiz:
             print(self.answer_button_4['text'])
             if self.answer_button_4['text'] == self.correct_fear:
                 print("correct")
+                number_correct += 1
                 
                 self.answer_button_4.config(bg="#83cf5f")   
                 correct = True
@@ -334,6 +343,7 @@ class Quiz:
 
         # if user chooses wrong answer highlight correct answer in orange
         if correct == False:
+            number_wrong += 1 
             if self.answer_button_1['text'] == self.correct_fear:
                 self.answer_button_1.config(bg="#ffb73a")
             elif self.answer_button_2['text'] == self.correct_fear:
@@ -348,8 +358,12 @@ class Quiz:
         print(self.correct_fear)
         self.next_button.config(state=NORMAL)
 
+
+        # add results to quiz stats list
+        self.quiz_stats_list = [number_correct, number_wrong]
+
         # add round results to statistics list
-        round_summary = "Round: {} Chosen answer: {} Correct answer: {} ".format(self.round_num, chosen_answer, self.correct_fear)
+        round_summary = "Round {} | Question: {} | Chosen answer: {} | Correct answer: {} ".format(self.round_num, self.question, chosen_answer, self.correct_fear)
         self.round_stats_list.append(round_summary)
         print(round_summary)
 
@@ -367,6 +381,116 @@ class Quiz:
     def to_stats(self, quiz_history, quiz_stats):
         QuizStats(self, quiz_history, quiz_stats)
     
+
+
+class QuizStats:
+    def __init__(self, partner, quiz_history, quiz_stats):
+
+        # disable help button
+        partner.stats_button.config(state=DISABLED)
+
+        heading = "Arial 12 bold"
+        content = "Arial 12"
+
+        # Sets up child window (ie: help box)
+        self.stats_box = Toplevel()
+
+        # If users press cross at top, closes help and 'releases' help button
+        self.stats_box.protocol('WM_DELETE_WINDOW', partial(self.close_stats, partner))
+
+        # Set up GUI Frame
+        self.stats_frame = Frame(self.stats_box)
+        self.stats_frame.grid()
+
+        # Set up stats heading row 0
+        self.stats_heading_label = Label(self.stats_frame, text="Quiz Statistics",
+                                         font="arial 19 bold")
+        self.stats_heading_label.grid(row=0)
+
+        # Rounds Played (row 2.4)
+        self.rounds_played_label = Label(self.details_frame, text="Rounds Played",
+                                        font=heading, anchor="e")
+        self.rounds_played_label.grid(row=1, column=0, padx=0)
+
+        self.games_played_value_label = Label(self.details_frame, text=len(quiz_history),
+                                        font=content, anchor="w")
+        self.games_played_value_label.grid(row=1, column=1, padx=0)
+
+        # Starting Balance (row 2)
+        self.details_frame = Frame(self.stats_frame)
+        self.details_frame.grid(row=2)
+
+        # Statrting balance (row 2.0)
+        self.start_balance_label = Label(self.details_frame,
+                                         text="Starting Balance:", font=heading,
+                                         anchor="e")
+        self.start_balance_label.grid(row=0, column=0, padx=0)
+
+        self.start_balance_value_label = Label(self.details_frame, font=content,
+                                               text="${}".format(quiz_stats[0]),
+                                               anchor="w")
+        self.start_balance_value_label.grid(row=0, column=1, padx=0)
+
+        # Current Balance (row 2.2)
+        self.current_balance_label = Label(self.details_frame,
+                                         text="Current Balance:", font=heading,
+                                         anchor="e")
+        self.current_balance_label.grid(row=1, column=0, padx=0)
+
+        self.current_balance_value_label = Label(self.details_frame, font=content,
+                                               text="${}".format(quiz_stats[1]),
+                                               anchor="w")
+        self.current_balance_value_label.grid(row=1, column=1, padx=0) 
+
+        if quiz_stats[1] > quiz_stats[0]:
+            win_loss = "Amount Won:"
+            amount = quiz_stats[1] - quiz_stats[0]
+            win_loss_fg = "green"
+        else:
+            win_loss = "Amount Lost:"
+            amount = quiz_stats[0] - quiz_stats[1]
+            win_loss_fg = "#660000"
+
+        # Amount won / lost (row 2.3)
+        self.win_loss_label = Label(self.details_frame, text=win_loss,
+                                     font=heading, anchor="e", fg=win_loss_fg)
+        self.win_loss_label.grid(row=2, column=0, padx=0)
+
+        self.win_loss_value_label = Label(self.details_frame, text="$ {}".format(amount),
+                                     font=content, anchor="w", fg=win_loss_fg)
+        self.win_loss_value_label.grid(row=2, column=1, padx=0)
+
+        # To Export <instructions> (row 1)
+        self.export_intructons = Label(self.stats_frame,
+                                       text="instructions go here", wrap=250,
+                                       font="arial 10 italic", justify=LEFT,
+                                       fg="green", padx=10, pady=10)
+        self.export_intructons.grid(row=4)
+
+
+        # Export / Dismiss button (row 3)
+        self.export_dismiss_frame = Frame(self.stats_frame)
+        self.export_dismiss_frame.grid(row=3, pady=10)
+
+        # Export Button
+        self.export_button = Button(self.export_dismiss_frame, text="Export",
+                                    font="arial 12 bold",
+                                    command=lambda: self.export(quiz_history, quiz_stats))
+        self.export_button.grid(row=0, column=0)
+
+        # Dismiss Button
+        self.dismiss_button = Button(self.export_dismiss_frame, text="Dismiss",
+                                    font="arial 12 bold",
+                                    command=partial(self.close_stats, partner))
+        self.dismiss_button.grid(row=0, column=1)
+
+    def close_stats(self, partner):
+        # Put stats button back to normal..
+        partner.stats_button.config(state=NORMAL)
+        self.stats_box.destroy()
+
+    def export(self, quiz_history, all_quiz_stats):
+        Export(self, quiz_history, all_quiz_stats)
 
 
             
