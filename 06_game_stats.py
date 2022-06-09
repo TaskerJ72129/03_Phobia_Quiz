@@ -276,9 +276,6 @@ class Quiz:
     # tells user if answer is right or wrong
     def right_wrong(self, button):
 
-        number_correct = 0
-        number_wrong = 0
-
         # disables answer buttons after user chooses one
         self.answer_button_1.config(state=DISABLED)
         self.answer_button_2.config(state=DISABLED)
@@ -360,7 +357,7 @@ class Quiz:
 
 
         # add results to quiz stats list
-        self.quiz_stats_list = [number_correct, number_wrong]
+        self.quiz_stats_list = [self.round_num, number_correct, number_wrong]
 
         # add round results to statistics list
         round_summary = "Round {} | Question: {} | Chosen answer: {} | Correct answer: {} ".format(self.round_num, self.question, chosen_answer, self.correct_fear)
@@ -386,6 +383,8 @@ class Quiz:
 class QuizStats:
     def __init__(self, partner, quiz_history, quiz_stats):
 
+
+
         # disable help button
         partner.stats_button.config(state=DISABLED)
 
@@ -399,48 +398,58 @@ class QuizStats:
         self.stats_box.protocol('WM_DELETE_WINDOW', partial(self.close_stats, partner))
 
         # Set up GUI Frame
-        self.stats_frame = Frame(self.stats_box)
+        self.stats_frame = Frame(self.stats_box,)
         self.stats_frame.grid()
 
         # Set up stats heading row 0
-        self.stats_heading_label = Label(self.stats_frame, text="Quiz Statistics",
+        self.stats_heading_label = Label(self.stats_frame, text="Quiz Statistics", padx=20,
                                          font="arial 19 bold")
         self.stats_heading_label.grid(row=0)
-
-        # Rounds Played (row 2.4)
-        self.rounds_played_label = Label(self.details_frame, text="Rounds Played",
-                                        font=heading, anchor="e")
-        self.rounds_played_label.grid(row=1, column=0, padx=0)
-
-        self.games_played_value_label = Label(self.details_frame, text=len(quiz_history),
-                                        font=content, anchor="w")
-        self.games_played_value_label.grid(row=1, column=1, padx=0)
 
         # Starting Balance (row 2)
         self.details_frame = Frame(self.stats_frame)
         self.details_frame.grid(row=2)
 
+        # Rounds Played (row 2.4)
+        self.rounds_played_label = Label(self.details_frame, text="Rounds Played",
+                                        font=heading, anchor="e")
+        self.rounds_played_label.grid(row=0, column=0, padx=0)
+
+        rounds = quiz_stats[0]
+
+        self.games_played_value_label = Label(self.details_frame, text=rounds,
+                                        font=content, anchor="w")
+        self.games_played_value_label.grid(row=0, column=1, padx=0)
+
+
         # Statrting balance (row 2.0)
         self.start_balance_label = Label(self.details_frame,
-                                         text="Starting Balance:", font=heading,
+                                         text="Correct:", font=heading,
                                          anchor="e")
-        self.start_balance_label.grid(row=0, column=0, padx=0)
+        self.start_balance_label.grid(row=1, column=0, padx=0)
+
+        correct = quiz_stats[1]
 
         self.start_balance_value_label = Label(self.details_frame, font=content,
-                                               text="${}".format(quiz_stats[0]),
+                                               text=correct,
                                                anchor="w")
-        self.start_balance_value_label.grid(row=0, column=1, padx=0)
+        self.start_balance_value_label.grid(row=1, column=1, padx=0)
 
         # Current Balance (row 2.2)
         self.current_balance_label = Label(self.details_frame,
-                                         text="Current Balance:", font=heading,
+                                         text="Incorrect:", font=heading,
                                          anchor="e")
-        self.current_balance_label.grid(row=1, column=0, padx=0)
+        self.current_balance_label.grid(row=2, column=0, padx=0)
+
+        incorrect = quiz_stats[2]
 
         self.current_balance_value_label = Label(self.details_frame, font=content,
-                                               text="${}".format(quiz_stats[1]),
+                                               text=incorrect,
                                                anchor="w")
-        self.current_balance_value_label.grid(row=1, column=1, padx=0) 
+        self.current_balance_value_label.grid(row=2, column=1, padx=0) 
+
+        percentage_correct = (correct / (rounds))*100 
+        print(percentage_correct)
 
         if quiz_stats[1] > quiz_stats[0]:
             win_loss = "Amount Won:"
@@ -454,15 +463,15 @@ class QuizStats:
         # Amount won / lost (row 2.3)
         self.win_loss_label = Label(self.details_frame, text=win_loss,
                                      font=heading, anchor="e", fg=win_loss_fg)
-        self.win_loss_label.grid(row=2, column=0, padx=0)
+        self.win_loss_label.grid(row=3, column=0, padx=0)
 
         self.win_loss_value_label = Label(self.details_frame, text="$ {}".format(amount),
                                      font=content, anchor="w", fg=win_loss_fg)
-        self.win_loss_value_label.grid(row=2, column=1, padx=0)
+        self.win_loss_value_label.grid(row=3, column=1, padx=0)
 
         # To Export <instructions> (row 1)
-        self.export_intructons = Label(self.stats_frame,
-                                       text="instructions go here", wrap=250,
+        self.export_intructons = Label(self.details_frame,
+                                       text="export to get full round summary", wrap=250,
                                        font="arial 10 italic", justify=LEFT,
                                        fg="green", padx=10, pady=10)
         self.export_intructons.grid(row=4)
@@ -470,7 +479,8 @@ class QuizStats:
 
         # Export / Dismiss button (row 3)
         self.export_dismiss_frame = Frame(self.stats_frame)
-        self.export_dismiss_frame.grid(row=3, pady=10)
+        self.export_dismiss_frame.grid(row=5, pady=10)
+
 
         # Export Button
         self.export_button = Button(self.export_dismiss_frame, text="Export",
