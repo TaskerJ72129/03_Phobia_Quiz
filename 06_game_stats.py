@@ -43,6 +43,9 @@ class Start:
 class Quiz:
     def __init__(self, partner):
 
+        self.number_correct = 0
+        self.number_wrong = 0
+        
         # List for holding statistics
         self.round_stats_list = []
 
@@ -290,7 +293,7 @@ class Quiz:
             print(self.answer_button_1['text'])
             if self.answer_button_1['text'] == self.correct_fear:
                 print("correct")
-                number_correct += 1
+                self.number_correct += 1
 
                 self.answer_button_1.config(bg="#83cf5f")
                 correct = True
@@ -303,7 +306,7 @@ class Quiz:
             print(self.answer_button_2['text'])
             if self.answer_button_2['text'] == self.correct_fear:
                 print("correct")
-                number_correct += 1
+                self.number_correct += 1
                 
                 self.answer_button_2.config(bg="#83cf5f")
                 correct = True
@@ -316,7 +319,7 @@ class Quiz:
             print(self.answer_button_3['text'])
             if self.answer_button_3['text'] == self.correct_fear:
                 print("correct")
-                number_correct += 1
+                self.number_correct += 1
 
                 self.answer_button_3.config(bg="#83cf5f")
                 correct = True
@@ -329,7 +332,7 @@ class Quiz:
             print(self.answer_button_4['text'])
             if self.answer_button_4['text'] == self.correct_fear:
                 print("correct")
-                number_correct += 1
+                self.number_correct += 1
                 
                 self.answer_button_4.config(bg="#83cf5f")   
                 correct = True
@@ -340,7 +343,7 @@ class Quiz:
 
         # if user chooses wrong answer highlight correct answer in orange
         if correct == False:
-            number_wrong += 1 
+            self.number_wrong += 1 
             if self.answer_button_1['text'] == self.correct_fear:
                 self.answer_button_1.config(bg="#ffb73a")
             elif self.answer_button_2['text'] == self.correct_fear:
@@ -357,7 +360,7 @@ class Quiz:
 
 
         # add results to quiz stats list
-        self.quiz_stats_list = [self.round_num, number_correct, number_wrong]
+        self.quiz_stats_list = [self.round_num, self.number_correct, self.number_wrong]
 
         # add round results to statistics list
         round_summary = "Round {} | Question: {} | Chosen answer: {} | Correct answer: {} ".format(self.round_num, self.question, chosen_answer, self.correct_fear)
@@ -417,69 +420,58 @@ class QuizStats:
 
         rounds = quiz_stats[0]
 
-        self.games_played_value_label = Label(self.details_frame, text=rounds,
+        self.rounds_number_label = Label(self.details_frame, text=rounds,
                                         font=content, anchor="w")
-        self.games_played_value_label.grid(row=0, column=1, padx=0)
+        self.rounds_number_label.grid(row=0, column=1, padx=0)
 
 
         # Statrting balance (row 2.0)
-        self.start_balance_label = Label(self.details_frame,
+        self.correct_label = Label(self.details_frame,
                                          text="Correct:", font=heading,
                                          anchor="e")
-        self.start_balance_label.grid(row=1, column=0, padx=0)
+        self.correct_label.grid(row=1, column=0, padx=0)
 
         correct = quiz_stats[1]
 
-        self.start_balance_value_label = Label(self.details_frame, font=content,
+        self.correct_number_label = Label(self.details_frame, font=content,
                                                text=correct,
                                                anchor="w")
-        self.start_balance_value_label.grid(row=1, column=1, padx=0)
+        self.correct_number_label.grid(row=1, column=1, padx=0)
 
         # Current Balance (row 2.2)
-        self.current_balance_label = Label(self.details_frame,
+        self.incorrect_label = Label(self.details_frame,
                                          text="Incorrect:", font=heading,
                                          anchor="e")
-        self.current_balance_label.grid(row=2, column=0, padx=0)
+        self.incorrect_label.grid(row=2, column=0, padx=0)
 
         incorrect = quiz_stats[2]
 
-        self.current_balance_value_label = Label(self.details_frame, font=content,
+        self.incorrect_number_label = Label(self.details_frame, font=content,
                                                text=incorrect,
                                                anchor="w")
-        self.current_balance_value_label.grid(row=2, column=1, padx=0) 
+        self.incorrect_number_label.grid(row=2, column=1, padx=0) 
 
         percentage_correct = (correct / (rounds))*100 
         print(percentage_correct)
 
-        if quiz_stats[1] > quiz_stats[0]:
-            win_loss = "Amount Won:"
-            amount = quiz_stats[1] - quiz_stats[0]
+        if percentage_correct == 100:
             win_loss_fg = "green"
         else:
-            win_loss = "Amount Lost:"
-            amount = quiz_stats[0] - quiz_stats[1]
-            win_loss_fg = "#660000"
+            win_loss_fg = "#000000"
 
         # Amount won / lost (row 2.3)
-        self.win_loss_label = Label(self.details_frame, text=win_loss,
+        self.win_loss_label = Label(self.details_frame, text="Percentage Correct",
                                      font=heading, anchor="e", fg=win_loss_fg)
         self.win_loss_label.grid(row=3, column=0, padx=0)
 
-        self.win_loss_value_label = Label(self.details_frame, text="$ {}".format(amount),
+        self.win_loss_value_label = Label(self.details_frame, text=" {:.0f}%".format(percentage_correct),
                                      font=content, anchor="w", fg=win_loss_fg)
         self.win_loss_value_label.grid(row=3, column=1, padx=0)
-
-        # To Export <instructions> (row 1)
-        self.export_intructons = Label(self.details_frame,
-                                       text="export to get full round summary", wrap=250,
-                                       font="arial 10 italic", justify=LEFT,
-                                       fg="green", padx=10, pady=10)
-        self.export_intructons.grid(row=4)
 
 
         # Export / Dismiss button (row 3)
         self.export_dismiss_frame = Frame(self.stats_frame)
-        self.export_dismiss_frame.grid(row=5, pady=10)
+        self.export_dismiss_frame.grid(row=4, pady=10)
 
 
         # Export Button
