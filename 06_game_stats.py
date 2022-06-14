@@ -380,7 +380,9 @@ class Quiz:
 
     def to_stats(self, quiz_history, quiz_stats):
         QuizStats(self, quiz_history, quiz_stats)
-    
+
+
+
 
 
 class QuizStats:
@@ -475,25 +477,44 @@ class QuizStats:
 
 
         # Export Button
-        self.export_button = Button(self.export_dismiss_frame, text="Export",
+        self.export_button = Button(self.export_dismiss_frame, text="Export", bg="#CED4DA",
                                     font="arial 12 bold",
                                     command=lambda: self.export(quiz_history, quiz_stats))
-        self.export_button.grid(row=0, column=0)
+        self.export_button.grid(row=0, column=0, padx=2)
 
         # Dismiss Button
-        self.dismiss_button = Button(self.export_dismiss_frame, text="Dismiss",
+        self.dismiss_button = Button(self.export_dismiss_frame, text="Dismiss", bg="#CED4DA",
                                     font="arial 12 bold",
                                     command=partial(self.close_stats, partner))
-        self.dismiss_button.grid(row=0, column=1)
+        self.dismiss_button.grid(row=0, column=1, padx=2)
+
+        self.quit_frame = Frame(self.stats_frame)
+        self.quit_frame.grid(row=5, pady=10)
+
+        # Quit Button
+        self.quit_button = Button(self.quit_frame, text="Restart Game",
+                                  bg="#343a40", fg="white", font="Arial 15 bold",
+                                  command=lambda: self.to_quiz(), padx=10, pady=10)
+        self.quit_button.grid(row=1, pady=10)
+
 
     def close_stats(self, partner):
         # Put stats button back to normal..
         partner.stats_button.config(state=NORMAL)
         self.stats_box.destroy()
 
+
     def export(self, quiz_history, all_quiz_stats):
         Export(self, quiz_history, all_quiz_stats)
 
+
+    def to_quiz(self):
+
+        Quiz(self)
+
+        # hide start up window
+        self.quiz_box.withdraw()
+        root.withdraw()
 
             
 class Help:
@@ -534,7 +555,6 @@ class Help:
         # Put help button back to normal..
         partner.help_button.config(state=NORMAL)
         self.help_box.destroy()
-
 
 
 
