@@ -101,9 +101,6 @@ class Quiz:
         self.heading_label.grid(row=0)
 
         self.round_num = 0
-        print(self.round_num)
-
-        
 
         # Question number Label
         self.question_number_label = Label(self.quiz_frame, wrap=300, justify=LEFT,
@@ -205,16 +202,13 @@ class Quiz:
         # generates correct phobia
         random_phobia = random.randint(0, (len(self.phobia_list)-1))
         correct_phobia = self.phobia_list[random_phobia]
-        print("{}is the fear of:".format(correct_phobia))
 
         self.correct_fear = self.fear_name_list[random_phobia]
-        print(self.correct_fear)
+        print("correct fear: {}".format(self.correct_fear))
         
         # removes used phobia from list (until end of Quiz)
         self.phobia_list.pop(random_phobia)
         self.fear_name_list.pop(random_phobia)
-        print(len(self.phobia_list))
-        print(len(self.fear_name_list))
 
         # generates 3 random fears
         self.random_fears = random.sample(range(1, len(self.all_fears)-1), 3)
@@ -223,9 +217,7 @@ class Quiz:
         random_fear_2 = self.random_fears[1]
         random_fear_3 = self.random_fears[2]
         self.random_fear_names = [self.all_fears[random_fear_1], self.all_fears[random_fear_2], self.all_fears[random_fear_3]]
-        print(self.random_fear_names)
-        print(self.correct_fear)
-        print(self.random_fears)
+
 
         # loop random fear generation untill its not the same as the correct answer
         while self.correct_fear in self.random_fear_names:
@@ -235,9 +227,6 @@ class Quiz:
                 random_fear_2 = self.random_fears[1]
                 random_fear_3 = self.random_fears[2]
                 self.random_fear_names = [self.all_fears[random_fear_1], self.all_fears[random_fear_2], self.all_fears[random_fear_3]]
-                print(self.random_fear_names)
-                print(self.correct_fear)
-                print(self.random_fears)
                 continue
             else:
                 break
@@ -290,54 +279,42 @@ class Quiz:
         # checks if answers are correct or incorrect and colours buttons accordingly (red if wrong and green if right)
         if button == 1:
             chosen_answer = self.answer_button_1['text']
-            print(self.answer_button_1['text'])
             if self.answer_button_1['text'] == self.correct_fear:
-                print("correct")
                 self.number_correct += 1
 
                 self.answer_button_1.config(bg="#83cf5f")
                 correct = True
             else:
-                print("incorrect")
                 self.answer_button_1.config(bg="#ff6b6b")
                 correct = False
         elif button == 2:
             chosen_answer = self.answer_button_2['text']
-            print(self.answer_button_2['text'])
             if self.answer_button_2['text'] == self.correct_fear:
-                print("correct")
                 self.number_correct += 1
                 
                 self.answer_button_2.config(bg="#83cf5f")
                 correct = True
             else:
-                print("incorrect")
                 self.answer_button_2.config(bg="#ff6b6b")
                 correct = False
         elif button == 3:
             chosen_answer = self.answer_button_3['text']
-            print(self.answer_button_3['text'])
             if self.answer_button_3['text'] == self.correct_fear:
-                print("correct")
                 self.number_correct += 1
 
                 self.answer_button_3.config(bg="#83cf5f")
                 correct = True
             else:
-                print("incorrect")
                 self.answer_button_3.config(bg="#ff6b6b")
                 correct = False
         else:
             chosen_answer = self.answer_button_4['text']
-            print(self.answer_button_4['text'])
             if self.answer_button_4['text'] == self.correct_fear:
-                print("correct")
                 self.number_correct += 1
                 
                 self.answer_button_4.config(bg="#83cf5f")   
                 correct = True
             else:
-                print("incorrect")
                 self.answer_button_4.config(bg="#ff6b6b")
                 correct = False
 
@@ -352,10 +329,8 @@ class Quiz:
                 self.answer_button_3.config(bg="#ffb73a")
             elif self.answer_button_4['text'] == self.correct_fear:
                 self.answer_button_4.config(bg="#ffb73a")
-        else:
-            print()
 
-        print(self.correct_fear)
+
         self.next_button.config(state=NORMAL)
 
 
@@ -454,7 +429,6 @@ class QuizStats:
         self.incorrect_number_label.grid(row=2, column=1, padx=0) 
 
         percentage_correct = (correct / (rounds))*100 
-        print(percentage_correct)
 
         if percentage_correct == 100:
             win_loss_fg = "green"
@@ -489,32 +463,15 @@ class QuizStats:
         self.dismiss_button.grid(row=0, column=1, padx=2)
 
         self.quit_frame = Frame(self.stats_frame)
-        self.quit_frame.grid(row=5, pady=10)
-
-        # Quit Button
-        self.quit_button = Button(self.quit_frame, text="Restart Game",
-                                  bg="#343a40", fg="white", font="Arial 15 bold",
-                                  command=lambda: self.to_quiz(), padx=10, pady=10)
-        self.quit_button.grid(row=1, pady=10)
-
+        self.quit_frame.grid(row=5)
 
     def close_stats(self, partner):
         # Put stats button back to normal..
         partner.stats_button.config(state=NORMAL)
         self.stats_box.destroy()
 
-
     def export(self, quiz_history, all_quiz_stats):
         Export(self, quiz_history, all_quiz_stats)
-
-
-    def to_quiz(self):
-
-        Quiz(self)
-
-        # hide start up window
-        self.quiz_box.withdraw()
-        root.withdraw()
 
             
 class Help:
