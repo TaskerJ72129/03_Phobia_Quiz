@@ -1,6 +1,7 @@
 from tkinter import *
 import random
 from functools import partial # To prevent unwanted windows
+from datetime import datetime # To get date and time of export
 
 
 class Start:
@@ -153,6 +154,7 @@ class Quiz:
                                    command=self.question_and_answers)
         self.next_button.grid(row=0, column=2, padx=2)
 
+        # disable next button until user answers question
         self.next_button.config(state=DISABLED)
     
         # Help and Quiz Stats button (row 6)
@@ -178,10 +180,15 @@ class Quiz:
                                   command=self.to_quit, padx=10, pady=10)
         self.quit_button.grid(row=7, pady=10)
 
+        self.stats_button.config(state=DISABLED)
+
         self.question_and_answers()
 
     # generates questions and answers
     def question_and_answers(self):
+
+        if self.round_stats_list != []:
+            self.stats_button.config(state=NORMAL)
 
         # resets buttons for next question
         self.next_button.config(state=DISABLED)
@@ -341,6 +348,7 @@ class Quiz:
         round_summary = "Round {} | Question: {} | Chosen answer: {} | Correct answer: {} ".format(self.round_num, self.question, chosen_answer, self.correct_fear)
         self.round_stats_list.append(round_summary)
         print(round_summary)
+        print(len(self.round_stats_list))
 
 
         if len(self.round_stats_list) == 0:
@@ -495,7 +503,7 @@ class Help:
 
         # Set up Help heading (row 0)
         self.how_heading = Label(self.help_frame, text="Help / Rules",
-                                    font="arial 10 bold", bg=background)
+                                    font="arial 19 bold", bg=background)
         self.how_heading.grid(row=0)
 
         # Help text (label, row 1)
@@ -533,7 +541,7 @@ class Export:
 
         # Set up Export heading (row 0)
         self.how_heading = Label(self.export_frame, text="Export / Instructions",
-                                    font="arial 14 bold")
+                                    font="arial 19 bold")
         self.how_heading.grid(row=0)
 
         # Export Instructions (label, row 1)
@@ -562,12 +570,12 @@ class Export:
 
         # Save and Cancel buttons (row 0 of save_cancel_frame)
         self.save_button = Button(self.save_cancel_frame, text="Save", font="Arial 15 bold",
-                                    bg="#003366", fg="white",
+                                    bg="#CED4DA", fg="black",
                                     command=partial(lambda: self.save_history(partner, quiz_history, quiz_stats)))
         self.save_button.grid(row=0, column=0)
 
         self.cancel_button = Button(self.save_cancel_frame, text="Cancel", font="Arial 15 bold",
-                                    bg="#660000", fg="white", 
+                                    bg="#CED4DA", fg="black", 
                                     command=partial(self.close_export, partner))
         self.cancel_button.grid(row=0, column=1)
 
@@ -612,8 +620,12 @@ class Export:
             # create file to hold data
             f = open(filename, "w+")
 
-            # Heading for Stats
-            f.write("Game Statistics\n\n")
+            # gets todays date
+            today = datetime.today()
+            date_time = today.strftime("%d/%m/%Y %H:%M")
+
+            # title and date for txt file
+            f.write("Quiz Statistics {}\n\n".format(date_time))
 
             # Starting Balance
             f.write("Round {}\n".format(quiz_stats[0]))
@@ -636,12 +648,13 @@ class Export:
             # close file
             f.close()
             
+            # close export window after writing to file
             partner.export_button.config(state=NORMAL)
             self.export_box.destroy()
 
         
     def close_export(self, partner):
-        # Put export button back to normal..
+        # Put export button back to normal
         partner.export_button.config(state=NORMAL)
         self.export_box.destroy()
 
