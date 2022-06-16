@@ -187,6 +187,7 @@ class Quiz:
     # generates questions and answers
     def question_and_answers(self):
 
+        # after round 1 enable stats button
         if self.round_stats_list != []:
             self.stats_button.config(state=NORMAL)
 
@@ -348,11 +349,6 @@ class Quiz:
         round_summary = "Round {} | Question: {} | Chosen answer: {} | Correct answer: {} ".format(self.round_num, self.question, chosen_answer, self.correct_fear)
         self.round_stats_list.append(round_summary)
         print(round_summary)
-        print(len(self.round_stats_list))
-
-
-        if len(self.round_stats_list) == 0:
-            self.stats_button.config(state=DISABLED)
 
     def to_quit(self):
         root.destroy()
@@ -572,12 +568,12 @@ class Export:
         self.save_button = Button(self.save_cancel_frame, text="Save", font="Arial 15 bold",
                                     bg="#CED4DA", fg="black",
                                     command=partial(lambda: self.save_history(partner, quiz_history, quiz_stats)))
-        self.save_button.grid(row=0, column=0)
+        self.save_button.grid(row=0, column=0, padx=2)
 
         self.cancel_button = Button(self.save_cancel_frame, text="Cancel", font="Arial 15 bold",
                                     bg="#CED4DA", fg="black", 
                                     command=partial(self.close_export, partner))
-        self.cancel_button.grid(row=0, column=1)
+        self.cancel_button.grid(row=0, column=1, padx=2)
 
     def save_history(self, partner, quiz_history, quiz_stats):
 
@@ -653,19 +649,15 @@ class Export:
             self.export_box.destroy()
 
         
+    # lets export window close after stats window is already closed
     def close_export(self, partner):
-        # Put export button back to normal
-        partner.export_button.config(state=NORMAL)
-        self.export_box.destroy()
-
-    # def close_export(self, partner):
-    #     # Put export button back to normal..
-    #     try:
-    #         partner.export_button.config(state=NORMAL)
-    #     except:
-    #         print()
-    #     finally:
-    #         self.export_box.destroy()
+        # Put export button back to normal..
+        try:
+            partner.export_button.config(state=NORMAL)
+        except:
+            print()
+        finally:
+            self.export_box.destroy()
 
 
 
