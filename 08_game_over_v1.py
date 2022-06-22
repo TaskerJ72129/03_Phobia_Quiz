@@ -50,29 +50,32 @@ class Quiz:
         # List for holding statistics
         self.round_stats_list = []
 
+        self.phobia_list = ['Achluophobia ', 'Acousticophobia ', 'Acrophobia ']
         # list of all phobias
-        self.phobia_list = ['Achluophobia ', 'Acousticophobia ', 'Acrophobia ', 'Agoraphobia ', 'Agyrophobia ', 'Aichmophobia ', 'Ailurophobia ', 'Algophobia ', 'Ancraophobia ', 
-        'Arachnophobia ', 'Astraphobia ', 'Autophobia ', 'Bacteriophobia ', 'Basophobia ', 'Batrachophobia ', 'Belonephobia ', 'Bibliophobia ', 'Cacophobia ', 'Carcinophobia ', 
-        'Catoptrophobia ', 'Chemophobia ', 'Cherophobia ', 'Chiroptophobia ', 'Chromophobia ', 'Chronomentrophobia ', 'Chronophobia ', 'Cibophobia ', 'Claustrophobia ', 'Coimetrophobia ', 
-        'Coulrophobia ', 'Cyberphobia ', 'Cynophobia ', 'Demonophobia ', 'Dendrophobia ', 'Dentophobia ', 'Domatophobia ', 'Emetophobia ', 'Enochlophobia ', 'Entomophobia ', 'Ephebiphobia ', 
-        'Equinophobia ', 'Ergophobia ', 'Frigophobia ', 'Gamophobia ', 'Gephyrophobia ', 'Gerascophobia ', 'Germophobia ', 'Globophobia ', 'Glossophobia ', 'Halitophobia ', 'Heliophobia ', 
-        'Helminthophobia ', 'Hemophobia ', 'Herpetophobia ', 'Hexakosioihexekontahexaphobia ', 'Hodophobia ', 'Hydrophobia ', 'Hypochondria ', 'Ichthyophobia ', 'Koumpounophobia ', 
-        'Lepidopterophobia ', 'Lilapsophobia ', 'Mageirocophobia ', 'Melanophobia ', 'Melissophobia ', 'Monophobia ', 'Musophobia ', 'Myrmecophobia ', 'Necrophobia ', 'Neophobia ', 'Noctiphobia ', 
-        'Nosocomephobia ', 'Numerophobia ', 'Nyctophobia ', 'Obesophobia ', 'Ommetaphobia ', 'Oneirophobia ', 'Ophidiophobia ', 'Ornithophobia ', 'Osmophobia ', 'Ostraconophobia ', 'Panphobia ', 
-        'pediaphobia ', 'Pharmacophobia ', 'Phasmophobia ', 'Phobophobia ', 'Phonophobia ', 'Pogonophobia ', 'Porphyrophobia ', 'Pteromerhanophobia ', 'Pyrophobia ', 'Radiophobia ', 
-        'Siderodromophobia ', 'Sociophobia ', 'Somniphobia ', 'Taphophobia ', 'Technophobia ', 'Tetraphobia ', 'Thalassophobia ', 'Thanatophobia ', 'Thermophobia ', 
-        'Toxiphobia ', 'Traumatophobia ', 'Trichophobia ', 'Triskaidekaphobia ','Vehophobia ', 'Xanthophobia ', 'Xenophobia '
-        ]
+        # self.phobia_list = ['Achluophobia ', 'Acousticophobia ', 'Acrophobia ', 'Agoraphobia ', 'Agyrophobia ', 'Aichmophobia ', 'Ailurophobia ', 'Algophobia ', 'Ancraophobia ', 
+        # 'Arachnophobia ', 'Astraphobia ', 'Autophobia ', 'Bacteriophobia ', 'Basophobia ', 'Batrachophobia ', 'Belonephobia ', 'Bibliophobia ', 'Cacophobia ', 'Carcinophobia ', 
+        # 'Catoptrophobia ', 'Chemophobia ', 'Cherophobia ', 'Chiroptophobia ', 'Chromophobia ', 'Chronomentrophobia ', 'Chronophobia ', 'Cibophobia ', 'Claustrophobia ', 'Coimetrophobia ', 
+        # 'Coulrophobia ', 'Cyberphobia ', 'Cynophobia ', 'Demonophobia ', 'Dendrophobia ', 'Dentophobia ', 'Domatophobia ', 'Emetophobia ', 'Enochlophobia ', 'Entomophobia ', 'Ephebiphobia ', 
+        # 'Equinophobia ', 'Ergophobia ', 'Frigophobia ', 'Gamophobia ', 'Gephyrophobia ', 'Gerascophobia ', 'Germophobia ', 'Globophobia ', 'Glossophobia ', 'Halitophobia ', 'Heliophobia ', 
+        # 'Helminthophobia ', 'Hemophobia ', 'Herpetophobia ', 'Hexakosioihexekontahexaphobia ', 'Hodophobia ', 'Hydrophobia ', 'Hypochondria ', 'Ichthyophobia ', 'Koumpounophobia ', 
+        # 'Lepidopterophobia ', 'Lilapsophobia ', 'Mageirocophobia ', 'Melanophobia ', 'Melissophobia ', 'Monophobia ', 'Musophobia ', 'Myrmecophobia ', 'Necrophobia ', 'Neophobia ', 'Noctiphobia ', 
+        # 'Nosocomephobia ', 'Numerophobia ', 'Nyctophobia ', 'Obesophobia ', 'Ommetaphobia ', 'Oneirophobia ', 'Ophidiophobia ', 'Ornithophobia ', 'Osmophobia ', 'Ostraconophobia ', 'Panphobia ', 
+        # 'pediaphobia ', 'Pharmacophobia ', 'Phasmophobia ', 'Phobophobia ', 'Phonophobia ', 'Pogonophobia ', 'Porphyrophobia ', 'Pteromerhanophobia ', 'Pyrophobia ', 'Radiophobia ', 
+        # 'Siderodromophobia ', 'Sociophobia ', 'Somniphobia ', 'Taphophobia ', 'Technophobia ', 'Tetraphobia ', 'Thalassophobia ', 'Thanatophobia ', 'Thermophobia ', 
+        # 'Toxiphobia ', 'Traumatophobia ', 'Trichophobia ', 'Triskaidekaphobia ','Vehophobia ', 'Xanthophobia ', 'Xenophobia '
+        #]
+
+        self.fear_name_list = ['darkness', 'noise', 'heights']
         # list of all the names for the phobias
-        self.fear_name_list = ['darkness', 'noise', 'heights', 'open spaces', 'crossing streets', 'sharp objects', 'cats', 'pain', 'wind', 'spiders', 'thunder and lightning',
-        'isolation', 'bacteria', 'falling', 'frogs', 'needles', 'books', 'ugliness', 'cancer', 'mirrors', 'chemicals', 'happiness', 'bats', 'colours', 'clocks', 'time passing', 'food', 
-        'closed spaces', 'cemetries', 'clowns', 'computers', 'dogs', 'demons', 'trees', 'dentists', 'houses', 'vomiting', 'crowds', 'insects', 'youth', 'horses', 'work', 'cold', 'marriage', 
-        'bridges', 'aging', 'germs', 'balloons', 'public speaking', 'bad breath', 'sunlight', 'worms', 'blood', 'reptiles', '666', 'travel', 'water', 'illness', 'fish', 'buttons', 
-        'butterflies', 'tornadoes or hurricanes', 'cooking', 'black', 'bees', 'being alone', 'mice', 'ants', 'death', 'new things', 'night', 'hospitals', 'numbers', 'darkness', 
-        'weight gain', 'eyes', 'dreams', 'snakes', 'birds', 'smells', 'shellfish', 'everything', 'babies and children', 'medicine', 'ghosts', 'fear', 'loud sounds', 'beards', 'purple', 
-        'flying', 'fire', 'radioactivity', 'trains', 'people', 'sleep', 'graves', 'technology', '4', 'sea', 'dying', 'heat', 'poisons', 'injury', 'hair loss', '13', 
-        'driving', 'yellow', 'foreigners'
-        ]
+        # self.fear_name_list = ['darkness', 'noise', 'heights', 'open spaces', 'crossing streets', 'sharp objects', 'cats', 'pain', 'wind', 'spiders', 'thunder and lightning',
+        # 'isolation', 'bacteria', 'falling', 'frogs', 'needles', 'books', 'ugliness', 'cancer', 'mirrors', 'chemicals', 'happiness', 'bats', 'colours', 'clocks', 'time passing', 'food', 
+        # 'closed spaces', 'cemetries', 'clowns', 'computers', 'dogs', 'demons', 'trees', 'dentists', 'houses', 'vomiting', 'crowds', 'insects', 'youth', 'horses', 'work', 'cold', 'marriage', 
+        # 'bridges', 'aging', 'germs', 'balloons', 'public speaking', 'bad breath', 'sunlight', 'worms', 'blood', 'reptiles', '666', 'travel', 'water', 'illness', 'fish', 'buttons', 
+        # 'butterflies', 'tornadoes or hurricanes', 'cooking', 'black', 'bees', 'being alone', 'mice', 'ants', 'death', 'new things', 'night', 'hospitals', 'numbers', 'darkness', 
+        # 'weight gain', 'eyes', 'dreams', 'snakes', 'birds', 'smells', 'shellfish', 'everything', 'babies and children', 'medicine', 'ghosts', 'fear', 'loud sounds', 'beards', 'purple', 
+        # 'flying', 'fire', 'radioactivity', 'trains', 'people', 'sleep', 'graves', 'technology', '4', 'sea', 'dying', 'heat', 'poisons', 'injury', 'hair loss', '13', 
+        # 'driving', 'yellow', 'foreigners'
+        # ]
 
         # duplicate fears list for random answers
         self.all_fears = ['darkness', 'noise', 'heights', 'open spaces', 'crossing streets', 'sharp objects', 'cats', 'pain', 'wind', 'spiders', 'thunder and lightning',
@@ -167,7 +170,6 @@ class Quiz:
         self.help_button.grid(row=0, column=1, padx=2)
 
 
-
         # Stats button
         self.stats_button = Button(self.help_export_frame, text="Stats", font=("Arial 14 bold"),
                                    bg="#CED4DA", 
@@ -183,6 +185,13 @@ class Quiz:
         self.stats_button.config(state=DISABLED)
 
         self.question_and_answers()
+    
+    def play_again(self):
+
+        # hide start up window
+        self.quiz_box.destroy()
+        Quiz(self)
+
 
     # generates questions and answers
     def question_and_answers(self):
@@ -193,7 +202,7 @@ class Quiz:
 
         # resets buttons for next question
         self.next_button.config(state=DISABLED)
- 
+
         self.answer_button_1.config(state=NORMAL)
         self.answer_button_2.config(state=NORMAL)
         self.answer_button_3.config(state=NORMAL)
@@ -204,74 +213,95 @@ class Quiz:
         self.answer_button_3.config(bg="#CED4DA")
         self.answer_button_4.config(bg="#CED4DA")
 
-        # add to round counter
-        self.round_num += 1
+        if len(self.phobia_list) == 0:
+            print("Game Over")
 
-        # generates correct phobia
-        random_phobia = random.randint(0, (len(self.phobia_list)-1))
-        correct_phobia = self.phobia_list[random_phobia]
+            self.answer_button_1.config(state=DISABLED, text="Game")
+            self.answer_button_2.config(state=DISABLED, text="Over")
+            self.answer_button_3.config(state=DISABLED, text="")
+            self.answer_button_4.config(state=DISABLED, text="")
 
-        self.correct_fear = self.fear_name_list[random_phobia]
-        print("correct fear: {}".format(self.correct_fear))
-        
-        # removes used phobia from list (until end of Quiz)
-        self.phobia_list.pop(random_phobia)
-        self.fear_name_list.pop(random_phobia)
+            self.question_label.config(font=("arial 10"), text="You have answered all the questions. You can view/save your stats, play again, or Quit")
 
-        # generates 3 random fears
-        self.random_fears = random.sample(range(1, len(self.all_fears)-1), 3)
-        # get the fear names for the phobias
-        random_fear_1 = self.random_fears[0]
-        random_fear_2 = self.random_fears[1]
-        random_fear_3 = self.random_fears[2]
-        self.random_fear_names = [self.all_fears[random_fear_1], self.all_fears[random_fear_2], self.all_fears[random_fear_3]]
+            self.next_button.config(state=NORMAL, text="Play Again", command=lambda: self.play_again())
+
+            # # Play button
+            # self.play_button = Button(self.play_frame, text="Play",
+            #                             command=lambda: self.to_quiz(),
+            #                             font="Arial 15 bold", bg="#CED4DA")
+            # self.play_button.grid(row=0, column=0, pady=10)
 
 
-        # loop random fear generation untill its not the same as the correct answer
-        while self.correct_fear in self.random_fear_names:
-            if self.correct_fear in self.random_fear_names:
-                self.random_fears = random.sample(range(1, len(self.all_fears)-1), 3)
-                random_fear_1 = self.random_fears[0]
-                random_fear_2 = self.random_fears[1]
-                random_fear_3 = self.random_fears[2]
-                self.random_fear_names = [self.all_fears[random_fear_1], self.all_fears[random_fear_2], self.all_fears[random_fear_3]]
-                continue
-            else:
-                break
 
-        # get fear names from all fear list
-        random_fear_1 = self.random_fears[0]
-        random_fear1_name = self.all_fears[random_fear_1]
+        else:
+            # add to round counter
+            self.round_num += 1
 
-        random_fear_2 = self.random_fears[1]
-        random_fear2_name = self.all_fears[random_fear_2]
+            # generates correct phobia
+            random_phobia = random.randint(0, (len(self.phobia_list)-1))
+            correct_phobia = self.phobia_list[random_phobia]
 
-        random_fear_3 = self.random_fears[2]
-        random_fear3_name = self.all_fears[random_fear_3]
+            self.correct_fear = self.fear_name_list[random_phobia]
+            print("correct fear: {}".format(self.correct_fear))
+            
+            # removes used phobia from list (until end of Quiz)
+            self.phobia_list.pop(random_phobia)
+            self.fear_name_list.pop(random_phobia)
+
+            # generates 3 random fears
+            self.random_fears = random.sample(range(1, len(self.all_fears)-1), 3)
+            # get the fear names for the phobias
+            random_fear_1 = self.random_fears[0]
+            random_fear_2 = self.random_fears[1]
+            random_fear_3 = self.random_fears[2]
+            self.random_fear_names = [self.all_fears[random_fear_1], self.all_fears[random_fear_2], self.all_fears[random_fear_3]]
 
 
-        # arranges random and correct fears randomly
-        random_num = random.sample(range(1,5),4)
-        fear_answers_list = [self.correct_fear, random_fear1_name, random_fear2_name, random_fear3_name]
+            # loop random fear generation untill its not the same as the correct answer
+            while self.correct_fear in self.random_fear_names:
+                if self.correct_fear in self.random_fear_names:
+                    self.random_fears = random.sample(range(1, len(self.all_fears)-1), 3)
+                    random_fear_1 = self.random_fears[0]
+                    random_fear_2 = self.random_fears[1]
+                    random_fear_3 = self.random_fears[2]
+                    self.random_fear_names = [self.all_fears[random_fear_1], self.all_fears[random_fear_2], self.all_fears[random_fear_3]]
+                    continue
+                else:
+                    break
 
-        answer1 = fear_answers_list[random_num[0]-1]
-        answer2 = fear_answers_list[random_num[1]-1]
-        answer3 = fear_answers_list[random_num[2]-1]
-        answer4 = fear_answers_list[random_num[3]-1]
+            # get fear names from all fear list
+            random_fear_1 = self.random_fears[0]
+            random_fear1_name = self.all_fears[random_fear_1]
 
-        # assigns randomly ordered fears to the buttons
-        self.answer_button_1.config(text=answer1)
-        self.answer_button_2.config(text=answer2)
-        self.answer_button_3.config(text=answer3)
-        self.answer_button_4.config(text=answer4)
+            random_fear_2 = self.random_fears[1]
+            random_fear2_name = self.all_fears[random_fear_2]
 
-        # question / round number
-        question_number = "Question {}".format(self.round_num)
-        self.question_number_label.config(text=question_number)
+            random_fear_3 = self.random_fears[2]
+            random_fear3_name = self.all_fears[random_fear_3]
 
-        # question
-        self.question = "{}is the fear of".format(correct_phobia)
-        self.question_label.config(text=self.question)
+
+            # arranges random and correct fears randomly
+            random_num = random.sample(range(1,5),4)
+            fear_answers_list = [self.correct_fear, random_fear1_name, random_fear2_name, random_fear3_name]
+
+            answer1 = fear_answers_list[random_num[0]-1]
+            answer2 = fear_answers_list[random_num[1]-1]
+            answer3 = fear_answers_list[random_num[2]-1]
+            answer4 = fear_answers_list[random_num[3]-1]
+
+            # assigns randomly ordered fears to the buttons
+            self.answer_button_1.config(text=answer1)
+            self.answer_button_2.config(text=answer2)
+            self.answer_button_3.config(text=answer3)
+            self.answer_button_4.config(text=answer4)
+
+            # question / round number
+            question_number = "Question {}".format(self.round_num)
+            self.question_number_label.config(text=question_number)
+
+            # question
+            self.question = "{}is the fear of".format(correct_phobia)
+            self.question_label.config(text=self.question)
 
     # tells user if answer is right or wrong
     def right_wrong(self, button):
