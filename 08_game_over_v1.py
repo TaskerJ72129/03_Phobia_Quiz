@@ -41,6 +41,8 @@ class Start:
         # hide start up window
         root.withdraw()
 
+
+
 class Quiz:
     def __init__(self, partner):
 
@@ -216,22 +218,17 @@ class Quiz:
         if len(self.phobia_list) == 0:
             print("Game Over")
 
-            self.answer_button_1.config(state=DISABLED, text="Game")
-            self.answer_button_2.config(state=DISABLED, text="Over")
+            self.answer_button_1.config(state=DISABLED, text="")
+            self.answer_button_2.config(state=DISABLED, text="")
             self.answer_button_3.config(state=DISABLED, text="")
             self.answer_button_4.config(state=DISABLED, text="")
 
             self.question_label.config(font=("arial 10"), text="You have answered all the questions. You can view/save your stats, play again, or Quit")
+            self.question_number_label.config(text="Game Over", font="Arial 15 bold")
 
             self.next_button.config(state=NORMAL, text="Play Again", command=lambda: self.play_again())
 
-            # # Play button
-            # self.play_button = Button(self.play_frame, text="Play",
-            #                             command=lambda: self.to_quiz(),
-            #                             font="Arial 15 bold", bg="#CED4DA")
-            # self.play_button.grid(row=0, column=0, pady=10)
-
-
+            self.help_button.config(state=DISABLED)
 
         else:
             # add to round counter
@@ -397,8 +394,6 @@ class Quiz:
 class QuizStats:
     def __init__(self, partner, quiz_history, quiz_stats):
 
-
-
         # disable help button
         partner.stats_button.config(state=DISABLED)
 
@@ -502,8 +497,13 @@ class QuizStats:
 
     def close_stats(self, partner):
         # Put stats button back to normal
-        partner.stats_button.config(state=NORMAL)
-        self.stats_box.destroy()
+        try:
+            partner.stats_button.config(state=NORMAL)
+        except:
+            print()
+        finally:
+            self.stats_box.destroy()
+
 
     def export(self, quiz_history, quiz_stats):
         Export(self, quiz_history, quiz_stats)
@@ -545,8 +545,12 @@ class Help:
 
     def close_help(self, partner):
         # Put help button back to normal..
-        partner.help_button.config(state=NORMAL)
-        self.help_box.destroy()
+        try:
+            partner.help_button.config(state=NORMAL)
+        except:
+            print()
+        finally:
+            self.help_box.destroy()
 
         
 class Export:
