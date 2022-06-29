@@ -241,9 +241,9 @@ class Quiz:
             random_phobia = random.randint(0, (len(self.phobia_list)-1))
             correct_phobia = self.phobia_list[random_phobia]
 
+            # get the fear name for that phobia
             self.correct_fear = self.fear_name_list[random_phobia]
-            print("correct fear: {}".format(self.correct_fear))
-            
+
             # removes used phobia from list (until end of Quiz)
             self.phobia_list.pop(random_phobia)
             self.fear_name_list.pop(random_phobia)
@@ -257,7 +257,7 @@ class Quiz:
             self.random_fear_names = [self.all_fears[random_fear_1], self.all_fears[random_fear_2], self.all_fears[random_fear_3]]
 
 
-            # loop random fear generation untill its not the same as the correct answer
+            # loop random fear generation until its not the same as the correct answer
             while self.correct_fear in self.random_fear_names:
                 if self.correct_fear in self.random_fear_names:
                     self.random_fears = random.sample(range(1, len(self.all_fears)-1), 3)
@@ -312,6 +312,7 @@ class Quiz:
         self.answer_button_3.config(state=DISABLED)
         self.answer_button_4.config(state=DISABLED)
 
+        # correct starts as False
         correct = False
 
         # checks if answers are correct or incorrect and colours buttons accordingly (red if wrong and green if right)
@@ -397,13 +398,14 @@ class Quiz:
 class QuizStats:
     def __init__(self, partner, quiz_history, quiz_stats):
 
-        # disable help button
+        # disable stats button
         partner.stats_button.config(state=DISABLED)
 
+        # setup font for all buttons 
         heading = "Arial 12 bold"
         content = "Arial 12"
 
-        # Sets up child window (ie: help box)
+        # Sets up child window (ie: stats box)
         self.stats_box = Toplevel()
 
         # If users press cross at top, closes help and 'releases' help button
@@ -413,16 +415,16 @@ class QuizStats:
         self.stats_frame = Frame(self.stats_box,)
         self.stats_frame.grid()
 
-        # Set up stats heading row 0
+        # Set up stats heading
         self.stats_heading_label = Label(self.stats_frame, text="Quiz Statistics", padx=20,
                                          font="arial 19 bold")
         self.stats_heading_label.grid(row=0)
 
-        # detatils frame (row 2)
+        # detatils frame
         self.details_frame = Frame(self.stats_frame)
         self.details_frame.grid(row=2)
 
-        # Rounds Played (row 0)
+        # Rounds Played
         self.rounds_played_label = Label(self.details_frame, text="Rounds Played",
                                         font=heading, anchor="e")
         self.rounds_played_label.grid(row=0, column=0, padx=0)
@@ -434,7 +436,7 @@ class QuizStats:
         self.rounds_number_label.grid(row=0, column=1, padx=0)
 
 
-        # correct (row 1)
+        # correct
         self.correct_label = Label(self.details_frame,
                                          text="Correct:", font=heading,
                                          anchor="e")
@@ -447,7 +449,7 @@ class QuizStats:
                                                anchor="w")
         self.correct_number_label.grid(row=1, column=1, padx=0)
 
-        # incorrect (row 2)
+        # incorrect
         self.incorrect_label = Label(self.details_frame,
                                          text="Incorrect:", font=heading,
                                          anchor="e")
@@ -460,8 +462,10 @@ class QuizStats:
                                                anchor="w")
         self.incorrect_number_label.grid(row=2, column=1, padx=0) 
 
+        # generate percentage of correct answers (of all answers)
         percentage_correct = (correct / (rounds))*100 
 
+        # colour percentage text green if 100% and red if 0% (black normal)
         if percentage_correct == 100:
             percentage_fg = "green"
         elif percentage_correct == 0:
@@ -469,7 +473,7 @@ class QuizStats:
         else:
             percentage_fg = "#000000"
 
-        # percentage correct (row 3)
+        # percentage correct
         self.percentage_label = Label(self.details_frame, text="Percentage Correct",
                                      font=heading, anchor="e", fg=percentage_fg)
         self.percentage_label.grid(row=3, column=0, padx=0)
@@ -478,7 +482,7 @@ class QuizStats:
                                      font=content, anchor="w", fg=percentage_fg)
         self.percentage_value_label.grid(row=3, column=1, padx=0)
 
-        # Export / Dismiss button (row 4)
+        # Export / Dismiss button
         self.export_dismiss_frame = Frame(self.stats_frame)
         self.export_dismiss_frame.grid(row=4, pady=10)
 
@@ -495,8 +499,6 @@ class QuizStats:
                                     command=partial(self.close_stats, partner))
         self.dismiss_button.grid(row=0, column=1, padx=2)
 
-        self.quit_frame = Frame(self.stats_frame)
-        self.quit_frame.grid(row=5)
 
     def close_stats(self, partner):
         # Put stats button back to normal
@@ -515,6 +517,7 @@ class QuizStats:
 class Help:
     def __init__(self, partner):
 
+        # setup background for some areas
         background = "#F8F9FA"
 
         # disable help button
@@ -547,7 +550,7 @@ class Help:
         self.dismiss_btn.grid(row=2, pady=10)
 
     def close_help(self, partner):
-        # Put help button back to normal..
+        # Put help button back to normal
         try:
             partner.help_button.config(state=NORMAL)
         except:
@@ -618,12 +621,15 @@ class Export:
         valid_char = "[A-Za-z0-9_]"
         has_error = "no"
 
+        # get filename
         filename = self.filename_entry.get()
 
+        # checks if letters match expected and if not tell user what the problem is
         for letter in filename:
             if re.match(valid_char, letter):
                 continue
-
+            
+        
             elif letter == " ":
                 problem = "(no spaces allowed)"
 
