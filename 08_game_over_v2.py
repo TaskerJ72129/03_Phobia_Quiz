@@ -197,9 +197,10 @@ class Quiz:
 
     # generates questions and answers
     def question_and_answers(self):
+        print(len(self.round_stats_list))
 
         # after round 1 enable stats button
-        if self.round_stats_list != []:
+        if len(self.round_stats_list) > 0:
             self.stats_button.config(state=NORMAL)
 
         # resets buttons for next question
