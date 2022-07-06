@@ -1,5 +1,5 @@
 from tkinter import *
-import random
+import random   # To get random numbers
 from functools import partial # To prevent unwanted windows
 from datetime import datetime # To get date and time of export
 
@@ -45,7 +45,8 @@ class Start:
 
 class Quiz:
     def __init__(self, partner):
-
+        
+        # setup stats
         self.number_correct = 0
         self.number_wrong = 0
         
@@ -79,7 +80,7 @@ class Quiz:
         'driving', 'yellow', 'foreigners'
         ]
 
-        # duplicate fears list for random answers
+        # fears list for random answers
         self.all_fears = ['darkness', 'noise', 'heights', 'open spaces', 'crossing streets', 'sharp objects', 'cats', 'pain', 'wind', 'spiders', 'thunder and lightning',
         'isolation', 'bacteria', 'falling', 'frogs', 'needles', 'books', 'ugliness', 'cancer', 'mirrors', 'chemicals', 'happiness', 'bats', 'colours', 'clocks', 'time passing', 'food', 
         'closed spaces', 'cemetries', 'clowns', 'computers', 'dogs', 'demons', 'trees', 'dentists', 'houses', 'vomiting', 'crowds', 'insects', 'youth', 'horses', 'work', 'cold', 'marriage', 
@@ -120,31 +121,28 @@ class Quiz:
                                         font="Arial 16", padx=10, pady=10, bg="#F8F9FA")
         self.question_label.grid(row=2)
 
-        answer1 = "answer 1"
-        answer2 = "answer 2"
-
         # Answer buttons go here (row 3)
         self.box_frame = Frame(self.quiz_frame, bg="#F8F9FA")
         self.box_frame.grid(row=3, pady=10)
 
-        self.answer_button_1 = Button(self.box_frame, text=answer1, bg="#CED4DA",
+        self.answer_button_1 = Button(self.box_frame, text="answer button 1", bg="#CED4DA",
                                   font="Arial 15 bold", width=20, padx=10, pady=10,
                                   command=lambda: self.right_wrong(1))
         self.answer_button_1.grid(row=0, column=1, padx=2, pady=2)
 
 
-        self.answer_button_2 = Button(self.box_frame, text=answer2, bg="#CED4DA",
+        self.answer_button_2 = Button(self.box_frame, text="answer button 2", bg="#CED4DA",
                                   font="Arial 15 bold", width=20, padx=10, pady=10,
                                   command=lambda: self.right_wrong(2))
         self.answer_button_2.grid(row=0, column=2, padx=2, pady=2)
 
 
-        self.answer_button_3 = Button(self.box_frame, text="Answer Buttons", bg="#CED4DA",
+        self.answer_button_3 = Button(self.box_frame, text="Answer Button 3", bg="#CED4DA",
                                   font="Arial 15 bold", width=20, padx=10, pady=10,
                                   command=lambda: self.right_wrong(3))
         self.answer_button_3.grid(row=1, column=1, padx=2, pady=2)
 
-        self.answer_button_4 = Button(self.box_frame, text="self.answer_button_4", bg="#CED4DA",
+        self.answer_button_4 = Button(self.box_frame, text="answer button 4", bg="#CED4DA",
                                   font="Arial 15 bold", width=20, padx=10, pady=10,
                                   command=lambda: self.right_wrong(4))
         self.answer_button_4.grid(row=1, column=2, padx=2, pady=2)
@@ -380,13 +378,15 @@ class Quiz:
         round_summary = "Round {} | Question: {} | Chosen answer: {} | Correct answer: {} ".format(self.round_num, self.question, chosen_answer, self.correct_fear)
         self.round_stats_list.append(round_summary)
         print(round_summary)
-
+    
     def to_quit(self):
+        # ends program
         root.destroy()
 
     def to_help(self):
         get_help = Help(self)
-        get_help.help_text.configure(text="choose an answer for the question and the boxes will turn different colours if you get it correct or incorrect, green means correct, red means incorrect and orange shows the correct answer if you get it incorrect. Then you can press next question for a new question. The stats button will let you view your stats for the quiz and in the stats box the export button will let you export your stats to a text file.")
+        # text for help box
+        get_help.help_text.configure(text="Choose an answer for the question and the boxes will turn different colours if you get it correct or incorrect, green means correct, red means incorrect and orange shows the correct answer if you get it incorrect. Then you can press next question for a new question. The stats button will let you view your stats for the quiz and in the stats box the export button will let you export your stats to a text file.")
 
     def to_stats(self, quiz_history, quiz_stats):
         QuizStats(self, quiz_history, quiz_stats)
