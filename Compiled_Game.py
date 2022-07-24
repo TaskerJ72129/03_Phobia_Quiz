@@ -2,6 +2,7 @@ from tkinter import *
 import random   # To get random numbers
 from functools import partial # To prevent unwanted windows
 from datetime import datetime # To get date and time of export
+import re
 
 
 class Start:
